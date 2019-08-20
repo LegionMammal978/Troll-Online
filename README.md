@@ -133,3 +133,6 @@ l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION
 + Funcion de invertir booleanos
 + Funcion de suma y resta de numeros.
 + Funcion de extracion de caracteres para strings.
+
+Unete a https://discord.gg/kt3jQjz para estar al tanto.
+
