@@ -52,7 +52,9 @@ para ponerle valor a una variable desde un array usa ARRAY-\_-NUMERO
 ARRAY-\_-NUMERO¨ç]VARIABLE
 ```
 
-Las variables que son arrays y strings ya se dijeron arriba.
+**Las variables que son arrays y strings ya se dijeron arriba.**
+
+**Los string no necesitan "", '', `` o etc**
 
 ### Condicionales
 
@@ -88,25 +90,38 @@ Imprime cualquier variable incluso booleanos
 
 ## Archivos
 
-Continuara...
+Para los archivos debes usar ♫↕! para apuntar a el archivo y usar csis para apuntar a la variable donde guardar el string con el contenido del archivo.
 
+```tllonline
+♫↕!ARCHIVOcsisVARIABLE
+```
+**Ningun apuntador es opcional**
 
+**Este metodo es asincrono osea si el archivo es gande o tu disco duro no es eficiente puede tardar un poco**
 
+## Online
 
+Para conectarte a un sitio web usaremos los siguientes apuntadores:
 
+l},ºVARIABLE => para poner la variable a almacenar el sitio web (html).
 
+<VARIABLE => para poner la variable a almacenar el status code del sitio web.
 
+¿LINK => El sitio web en forma de url no de variables
 
+¿AUTORIZACION => El header de "Authorization" en forma de texto no de variable 
 
+l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION
 
+**Ningun apuntador es opcional**
 
+**Este metodo es asincrono osea que el codigo se va a seguir ejecutando aunque no termine de cargar el sitio web**
 
+# Proximamente
 
-
-
-
-
-
-
-
-
++ Funcio para leer consola.
++ Funcion sleep (pausa del hilo actual).
++ Funcion de salir.
++ Funcion de invertir booleanos
++ Funcion de suma y resta de numeros.
++ Funcion de extracion de caracteres para strings.
