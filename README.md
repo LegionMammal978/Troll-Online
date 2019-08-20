@@ -23,7 +23,7 @@ Todas estas cosas deben estar separadas por saltos de lineas.
 para poner titulo pon <> al comienso del codigo y despues escribe adelante el codigo del comienzo (no dejes saltos de linea).
 
 ```tllonline
-777¨ç]k
+<TITULO>k¨ç]777
 ```
 
 ### variables
