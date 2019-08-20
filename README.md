@@ -43,7 +43,7 @@ VALOR¨ç]VARIABLE
 en caso de querer ponerle valor a un array debes usar º-/* para separar las variables
 
 ```tllonline
-VALOR¨ç]VARIABLEº-/*VARIABLE
+VALORº-/*VALOR¨ç]VARIABLE
 ```
 
 para ponerle valor a una variable desde un array usa ARRAY-\_-NUMERO
