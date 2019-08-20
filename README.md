@@ -18,6 +18,14 @@ Abres el programa de ahi tienes dos comandos "salir" y "ejecutar" escribes "ejec
 
 Todas estas cosas deben estar separadas por saltos de lineas.
 
+### Titulo
+
+para poner titulo pon <> al comienso del codigo y despues escribe adelante el codigo del comienzo (no dejes saltos de linea).
+
+```tllonline
+777¨ç]k
+```
+
 ### variables
 
 en este lenguaje hay 24 variables para asignarles un valor.
@@ -79,7 +87,7 @@ Los bucle a diferencia de otros lenguajes les debes indicar con una variable el 
 __rapVARIABLE
 ```
 
-## Consola
+### Consola
 
 Para imprimir algo en consola debes usar ↓ùp👌 seguido de una variable y para los arrays debes usar VARIABLE-\_-NUMERO
 
@@ -99,7 +107,7 @@ Para los archivos debes usar ♫↕! para apuntar a el archivo y usar csis para 
 
 **Este metodo es asincrono osea si el archivo es gande o tu disco duro no es eficiente puede tardar un poco**
 
-## Online
+### Online
 
 Para conectarte a un sitio web usaremos los siguientes apuntadores:
 
@@ -117,7 +125,7 @@ l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION
 
 **Este metodo es asincrono osea que el codigo se va a seguir ejecutando aunque no termine de cargar el sitio web**
 
-# Proximamente
+## Proximamente
 
 + Funcio para leer consola.
 + Funcion sleep (pausa del hilo actual).
