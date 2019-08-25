@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/jiqj80n9ly2zi8q/Troll_Online_Setup_x64.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/jc3kd6aurakhnlt/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](http://www.mediafire.com/file/doukvhmmrc7vz7z/Troll_Online_x86.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/hbeba857fgi9sr8/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -59,6 +59,7 @@ para ponerle valor a una variable desde un array usa ARRAY-\_-NUMERO
 ```tllonline
 ARRAY-_-NUMERO¨ç]VARIABLE
 ```
+**Los numneros son de tipo double**
 
 **Las variables que son arrays y strings ya se dijeron arriba.**
 
@@ -88,6 +89,16 @@ __rapVARIABLE
 ```
 
 ### Consola
+
+#### Entrada
+
+La instruccion 👉👌 sirve para almacenar algo que el usuario escriba en la consola en una variable.
+
+```tllonline
+VARIABLE👉👌
+```
+
+#### Salida
 
 Para imprimir algo en consola debes usar ↓ùp👌 seguido de una variable y para los arrays debes usar VARIABLE-\_-NUMERO
 
@@ -126,14 +137,62 @@ l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION
 
 **Este metodo es asincrono osea que el codigo se va a seguir ejecutando aunque no termine de cargar el sitio web**
 
+### Operadores de cambios
+
+Los operadores de cambio sirven para modificar el valor de una variable de manera eficiente.
+
+#### Booleans
+
+la instruccion !7; permite invertir el valor de un bool.
+
+Ejemplo:
+```tllonline
+!7;VARIABLE
+```
+
+#### Numeros
+
+La instruccion \_\_RPD sirve para restar una variable (number) por un numero que no puede ser una variable y \_\_DPR es lo mismo pero suma.
+
+Ejemplos:
+```tllonline
+VARIABLE__RPDnumero
+VARIABLE__DPRnumero
+```
+
+### Control de tiempo
+
+Con la instruccion çlbv detienes la ejecucion de codigo por la cantidad de tiempo la cual debe tener una variable asignada en milisegundos.
+
+Ejemplo:
+```tllonline
+çlbvVARIABLE
+```
+
+### Salir 
+
+Usando la instruccion &{- cierras el programa automaticamente.
+
+Ejemplo:
+```tllonline
+&{-
+```
+
 ## Proximamente
 
-+ Funcio para leer consola.
-+ Funcion sleep (pausa del hilo actual).
-+ Funcion de salir.
-+ Funcion de invertir booleanos
-+ Funcion de suma y resta de numeros.
++ Funcion para generar repeticiones a base de un x tiempo en otro hilo de ejecucion.
 + Funcion de extracion de caracteres para strings.
++ Expreciones regulares y su match y remplace.
+
+**Esperen estos cambios los proximos meses**
 
 Unete a https://discord.gg/kt3jQjz para estar al tanto.
 
+## Filosofia
+
++ Mejor inentendible que entendible.
++ Es mejor -yes que -y
++ El español debe ser algo obligatorio.
++ Los comentarios son para novatos.
++ Es mejor algo inutil e inentendible que algo util y entendible.
++ Los arrays son muy utiles con un bucle for.
