@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace onlineTroll
@@ -14,7 +15,7 @@ namespace onlineTroll
     //    {
     //    }
     //};
-    
+
     class Compilador
     {
         /*public async Task LOL()
@@ -75,20 +76,20 @@ namespace onlineTroll
                 string i = string.Empty;
                 string j = string.Empty;
 
-                float k = 0;
-                float l = 0;
-                float m = 0;
-                float n = 0;
-                float ñ = 0;
-                float o = 0;
-                float p = 0;
-                float q = 0;
-                float r = 0;
-                float s = 0;
+                Double k = 0;
+                Double l = 0;
+                Double m = 0;
+                Double n = 0;
+                Double ñ = 0;
+                Double o = 0;
+                Double p = 0;
+                Double q = 0;
+                Double r = 0;
+                Double s = 0;
 
-                float[] t = new float[999999999];
+                Double[] t = new Double[99999999];
                 string[] u = new string[99999999];
-                bool[] v = new bool[999999999];
+                bool[] v = new bool[99999999];
 
                 bool w = false;
                 bool x = false;
@@ -105,7 +106,7 @@ namespace onlineTroll
 
                 };
 
-                float buscarNumero()
+                Double buscarNumero()
                 {
 
                 };*/
@@ -116,6 +117,12 @@ namespace onlineTroll
                 var archivus = new Regex("^♫↕!.+csis.");
                 var consola = new Regex("^↓ùp👌.");
                 var bucle = new Regex("__rap.");
+                var salir = new Regex("&{-");
+                var sleep = new Regex("çlbv.");
+                var invertirbool = new Regex("!7;.");
+                var sumedore = new Regex(".__DPR.+");
+                var restare = new Regex(".__RPD.+");
+                var consolaentrada = new Regex(".👉👌");
 
                 for (var xxx = 0; xxx < diviciondecodigo.Length; xxx++)
                 {
@@ -127,9 +134,10 @@ namespace onlineTroll
                         if (repeticiones.Contains("k"))
                         {
                             var repeticionesGG = k;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -218,20 +226,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -258,7 +266,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -323,7 +331,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -552,7 +560,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -566,7 +574,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -585,7 +593,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -604,7 +612,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -623,7 +631,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -642,7 +650,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -661,7 +669,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -680,7 +688,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -699,7 +707,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -718,7 +726,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -737,7 +745,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -756,7 +764,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -769,14 +777,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -789,14 +797,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -809,14 +817,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -829,14 +837,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -849,14 +857,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -869,14 +877,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -889,14 +897,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -909,14 +917,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -929,14 +937,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -949,28 +957,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -980,7 +988,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -1000,7 +1008,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -1020,7 +1028,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -1040,7 +1048,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -1055,6 +1063,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -1067,9 +1298,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("l"))
                         {
                             var repeticionesGG = l;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -1158,20 +1390,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -1198,7 +1430,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -1263,7 +1495,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -1492,7 +1724,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -1506,7 +1738,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -1525,7 +1757,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -1544,7 +1776,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -1563,7 +1795,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -1582,7 +1814,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -1601,7 +1833,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -1620,7 +1852,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -1639,7 +1871,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -1658,7 +1890,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -1677,7 +1909,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -1696,7 +1928,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -1709,14 +1941,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -1729,14 +1961,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -1749,14 +1981,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -1769,14 +2001,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -1789,14 +2021,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -1809,14 +2041,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -1829,14 +2061,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -1849,14 +2081,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -1869,14 +2101,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -1889,28 +2121,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -1920,7 +2152,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -1940,7 +2172,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -1960,7 +2192,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -1980,7 +2212,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -1995,6 +2227,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -2007,9 +2462,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("m"))
                         {
                             var repeticionesGG = m;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -2098,20 +2554,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -2138,7 +2594,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -2203,7 +2659,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -2432,7 +2888,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -2446,7 +2902,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -2465,7 +2921,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -2484,7 +2940,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -2503,7 +2959,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -2522,7 +2978,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -2541,7 +2997,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -2560,7 +3016,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -2579,7 +3035,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -2598,7 +3054,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -2617,7 +3073,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -2636,7 +3092,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -2649,14 +3105,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -2669,14 +3125,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -2689,14 +3145,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -2709,14 +3165,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -2729,14 +3185,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -2749,14 +3205,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -2769,14 +3225,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -2789,14 +3245,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -2809,14 +3265,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -2829,28 +3285,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -2860,7 +3316,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -2880,7 +3336,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -2900,7 +3356,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -2920,7 +3376,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -2935,6 +3391,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -2947,9 +3626,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("n"))
                         {
                             var repeticionesGG = n;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -3038,20 +3718,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -3078,7 +3758,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -3143,7 +3823,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -3372,7 +4052,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -3386,7 +4066,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -3405,7 +4085,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -3424,7 +4104,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -3443,7 +4123,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -3462,7 +4142,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -3481,7 +4161,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -3500,7 +4180,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -3519,7 +4199,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -3538,7 +4218,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -3557,7 +4237,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -3576,7 +4256,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -3589,14 +4269,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -3609,14 +4289,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -3629,14 +4309,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -3649,14 +4329,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -3669,14 +4349,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -3689,14 +4369,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -3709,14 +4389,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -3729,14 +4409,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -3749,14 +4429,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -3769,28 +4449,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -3800,7 +4480,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -3820,7 +4500,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -3840,7 +4520,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -3860,7 +4540,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -3875,6 +4555,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -3887,9 +4790,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("ñ"))
                         {
                             var repeticionesGG = ñ;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -3978,20 +4882,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -4018,7 +4922,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -4083,7 +4987,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -4312,7 +5216,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -4326,7 +5230,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -4345,7 +5249,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -4364,7 +5268,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -4383,7 +5287,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -4402,7 +5306,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -4421,7 +5325,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -4440,7 +5344,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -4459,7 +5363,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -4478,7 +5382,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -4497,7 +5401,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -4516,7 +5420,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -4529,14 +5433,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -4549,14 +5453,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -4569,14 +5473,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -4589,14 +5493,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -4609,14 +5513,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -4629,14 +5533,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -4649,14 +5553,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -4669,14 +5573,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -4689,14 +5593,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -4709,28 +5613,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -4740,7 +5644,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -4760,7 +5664,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -4780,7 +5684,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -4800,7 +5704,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -4815,6 +5719,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -4827,9 +5954,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("o"))
                         {
                             var repeticionesGG = o;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -4918,20 +6046,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -4958,7 +6086,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -5023,7 +6151,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -5252,7 +6380,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -5266,7 +6394,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -5285,7 +6413,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -5304,7 +6432,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -5323,7 +6451,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -5342,7 +6470,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -5361,7 +6489,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -5380,7 +6508,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -5399,7 +6527,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -5418,7 +6546,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -5437,7 +6565,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -5456,7 +6584,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -5469,14 +6597,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -5489,14 +6617,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -5509,14 +6637,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -5529,14 +6657,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -5549,14 +6677,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -5569,14 +6697,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -5589,14 +6717,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -5609,14 +6737,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -5629,14 +6757,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -5649,28 +6777,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -5680,7 +6808,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -5700,7 +6828,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -5720,7 +6848,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -5740,7 +6868,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -5755,6 +6883,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -5767,9 +7118,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("p"))
                         {
                             var repeticionesGG = p;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -5858,20 +7210,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -5898,7 +7250,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -5963,7 +7315,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -6192,7 +7544,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -6206,7 +7558,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -6225,7 +7577,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -6244,7 +7596,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -6263,7 +7615,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -6282,7 +7634,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -6301,7 +7653,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -6320,7 +7672,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -6339,7 +7691,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -6358,7 +7710,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -6377,7 +7729,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -6396,7 +7748,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -6409,14 +7761,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -6429,14 +7781,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -6449,14 +7801,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -6469,14 +7821,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -6489,14 +7841,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -6509,14 +7861,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -6529,14 +7881,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -6549,14 +7901,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -6569,14 +7921,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -6589,28 +7941,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -6620,7 +7972,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -6640,7 +7992,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -6660,7 +8012,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -6680,7 +8032,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -6695,6 +8047,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -6707,9 +8282,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("q"))
                         {
                             var repeticionesGG = q;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -6798,20 +8374,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -6838,7 +8414,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -6903,7 +8479,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -7132,7 +8708,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -7146,7 +8722,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -7165,7 +8741,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -7184,7 +8760,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -7203,7 +8779,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -7222,7 +8798,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -7241,7 +8817,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -7260,7 +8836,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -7279,7 +8855,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -7298,7 +8874,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -7317,7 +8893,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -7336,7 +8912,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -7349,14 +8925,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -7369,14 +8945,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -7389,14 +8965,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -7409,14 +8985,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -7429,14 +9005,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -7449,14 +9025,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -7469,14 +9045,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -7489,14 +9065,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -7509,14 +9085,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -7529,28 +9105,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -7560,7 +9136,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -7580,7 +9156,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -7600,7 +9176,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -7620,7 +9196,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -7635,6 +9211,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -7647,9 +9446,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("r"))
                         {
                             var repeticionesGG = r;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -7738,20 +9538,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -7778,7 +9578,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -7843,7 +9643,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -8072,7 +9872,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -8086,7 +9886,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -8105,7 +9905,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -8124,7 +9924,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -8143,7 +9943,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -8162,7 +9962,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -8181,7 +9981,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -8200,7 +10000,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -8219,7 +10019,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -8238,7 +10038,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -8257,7 +10057,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -8276,7 +10076,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -8289,14 +10089,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -8309,14 +10109,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -8329,14 +10129,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -8349,14 +10149,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -8369,14 +10169,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -8389,14 +10189,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -8409,14 +10209,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -8429,14 +10229,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -8449,14 +10249,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -8469,28 +10269,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -8500,7 +10300,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -8520,7 +10320,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -8540,7 +10340,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -8560,7 +10360,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -8575,6 +10375,229 @@ namespace onlineTroll
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
                                                 z = bool.Parse(arrayasignacionif[0]);
                                             };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
                                         }
                                         else
                                         {
@@ -8587,9 +10610,10 @@ namespace onlineTroll
                         else if (repeticiones.Contains("s"))
                         {
                             var repeticionesGG = s;
+
                             for (int ddddd = 0; ddddd == repeticionesGG; ddddd++)
                             {
-                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                 for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                 {
                                     if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -8678,20 +10702,20 @@ namespace onlineTroll
                                         }
                                         else if (variablus[0].ToString().Contains("t"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             //Console.WriteLine(variablus[1]);
                                             var consolear = t[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("u"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = u[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
                                         else if (variablus[0].ToString().Contains("v"))
                                         {
-                                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var numero = variablus.Replace("-_-", "�").Split('�');
                                             var consolear = v[int.Parse(numero[1].ToString())];
                                             Console.WriteLine(consolear);
                                         }
@@ -8718,7 +10742,7 @@ namespace onlineTroll
                                     }
                                     else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
-                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                        var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                         if (File.Exists(divicionenaccion[0].Substring(3)))
                                         {
                                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -8783,7 +10807,7 @@ namespace onlineTroll
                                         //pagina.EnsureSuccessStatusCode();
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
-                                        float status;
+                                        Double status;
                                         switch (status1)
                                         {
                                             case "Accepted":
@@ -9012,7 +11036,7 @@ namespace onlineTroll
 
 
 
-                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                        string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                         ///////////////////////////////////////////
@@ -9026,7 +11050,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     a = u[int.Parse(divicionSuprema[1])];
@@ -9045,7 +11069,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     b = u[int.Parse(divicionSuprema[1])];
@@ -9064,7 +11088,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     c = u[int.Parse(divicionSuprema[1])];
@@ -9083,7 +11107,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     d = u[int.Parse(divicionSuprema[1])];
@@ -9102,7 +11126,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     e = u[int.Parse(divicionSuprema[1])];
@@ -9121,7 +11145,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     f = u[int.Parse(divicionSuprema[1])];
@@ -9140,7 +11164,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     g = u[int.Parse(divicionSuprema[1])];
@@ -9159,7 +11183,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     h = u[int.Parse(divicionSuprema[1])];
@@ -9178,7 +11202,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     i = u[int.Parse(divicionSuprema[1])];
@@ -9197,7 +11221,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                                 {
                                                     j = u[int.Parse(divicionSuprema[1])];
@@ -9216,7 +11240,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     k = t[int.Parse(divicionSuprema[1])];
@@ -9229,14 +11253,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                k = float.Parse(arrayasignacionif[0]);
+                                                k = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     l = t[int.Parse(divicionSuprema[1])];
@@ -9249,14 +11273,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                l = float.Parse(arrayasignacionif[0]);
+                                                l = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     m = t[int.Parse(divicionSuprema[1])];
@@ -9269,14 +11293,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                m = float.Parse(arrayasignacionif[0]);
+                                                m = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     n = t[int.Parse(divicionSuprema[1])];
@@ -9289,14 +11313,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                n = float.Parse(arrayasignacionif[0]);
+                                                n = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -9309,14 +11333,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                ñ = float.Parse(arrayasignacionif[0]);
+                                                ñ = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     o = t[int.Parse(divicionSuprema[1])];
@@ -9329,14 +11353,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                o = float.Parse(arrayasignacionif[0]);
+                                                o = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     p = t[int.Parse(divicionSuprema[1])];
@@ -9349,14 +11373,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                p = float.Parse(arrayasignacionif[0]);
+                                                p = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     q = t[int.Parse(divicionSuprema[1])];
@@ -9369,14 +11393,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                q = float.Parse(arrayasignacionif[0]);
+                                                q = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     r = t[int.Parse(divicionSuprema[1])];
@@ -9389,14 +11413,14 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                r = float.Parse(arrayasignacionif[0]);
+                                                r = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                                 {
                                                     s = t[int.Parse(divicionSuprema[1])];
@@ -9409,28 +11433,28 @@ namespace onlineTroll
                                             else
                                             {
                                                 //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                s = float.Parse(arrayasignacionif[0]);
+                                                s = Double.Parse(arrayasignacionif[0]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                         {
-                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                             {
                                                 if (jajadivicion[zzz].Contains("NaN"))
                                                 {
                                                     throw new Exception();
                                                 }
-                                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                                             };
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                         {
-                                            u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         }
                                         else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                         {
-                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                            var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                             {
                                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -9440,7 +11464,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     w = v[int.Parse(divicionSuprema[1])];
@@ -9460,7 +11484,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     x = v[int.Parse(divicionSuprema[1])];
@@ -9480,7 +11504,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     y = v[int.Parse(divicionSuprema[1])];
@@ -9500,7 +11524,7 @@ namespace onlineTroll
                                         {
                                             if (estoesarray.IsMatch(arrayasignacionif[0]))
                                             {
-                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                                 {
                                                     z = v[int.Parse(divicionSuprema[1])];
@@ -9521,23 +11545,246 @@ namespace onlineTroll
                                             throw new Exception();
                                         };
                                     }
+                                    else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        Environment.Exit(69);
+                                    }
+                                    else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                        if (varibleabuscar[0].ToString().Contains("k"))
+                                        {
+                                            Thread.Sleep(int.Parse(k.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("l"))
+                                        {
+                                            Thread.Sleep(int.Parse(l.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("m"))
+                                        {
+                                            Thread.Sleep(int.Parse(m.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("n"))
+                                        {
+                                            Thread.Sleep(int.Parse(n.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                        {
+                                            Thread.Sleep(int.Parse(ñ.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("o"))
+                                        {
+                                            Thread.Sleep(int.Parse(o.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("p"))
+                                        {
+                                            Thread.Sleep(int.Parse(p.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("q"))
+                                        {
+                                            Thread.Sleep(int.Parse(q.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("r"))
+                                        {
+                                            Thread.Sleep(int.Parse(r.ToString()));
+                                        }
+                                        else if (varibleabuscar[0].ToString().Contains("s"))
+                                        {
+                                            Thread.Sleep(int.Parse(s.ToString()));
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                        if (variableainvertir[0].ToString().Contains("w"))
+                                        {
+                                            w = !w;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("x"))
+                                        {
+                                            x = !x;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("y"))
+                                        {
+                                            y = !y;
+                                        }
+                                        else if (variableainvertir[0].ToString().Contains("z"))
+                                        {
+                                            z = !z;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r - numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s - numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                        var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                        if (variableaferificar.ToString().Contains("k"))
+                                        {
+                                            k = k + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("l"))
+                                        {
+                                            l = l + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("m"))
+                                        {
+                                            m = m + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("n"))
+                                        {
+                                            n = n + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("ñ"))
+                                        {
+                                            ñ = ñ + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("o"))
+                                        {
+                                            o = o + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("p"))
+                                        {
+                                            p = p + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("q"))
+                                        {
+                                            q = q + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("r"))
+                                        {
+                                            r = r + numeroparalamodificacion;
+                                        }
+                                        else if (variableaferificar.ToString().Contains("s"))
+                                        {
+                                            s = s + numeroparalamodificacion;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                        if (variableparalacomprobacion.ToString().Contains("a"))
+                                        {
+                                            a = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                                        {
+                                            b = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                                        {
+                                            c = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                                        {
+                                            d = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                                        {
+                                            e = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                                        {
+                                            f = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                                        {
+                                            g = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                                        {
+                                            h = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                                        {
+                                            i = Console.ReadLine();
+                                        }
+                                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                                        {
+                                            j = Console.ReadLine();
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                 }
                             };
                         };
                     }
                     else if (laif.IsMatch(diviciondecodigo[xxx]))
                     {
-                        var arrayasignacion = diviciondecodigo[xxx].Replace("¿!ª#", "\uFFFF").Split('\uFFFF');
+                        var arrayasignacion = diviciondecodigo[xxx].Replace("¿!ª#", "�").Split('�');
                         /*string aa;
-                        float ab;
+                        Double ab;
                         bool ac;
                         string ba;
-                        float bb;
+                        Double bb;
                         bool bc;*/
                         string suno = null;
-                        float funo = float.NaN;
+                        Double funo = Double.NaN;
                         string sdos = null;
-                        float fdos = float.NaN;
+                        Double fdos = Double.NaN;
                         //Console.WriteLine(Eval.Execute<String>("a"), new { a = a });
                         switch (arrayasignacion[0])
                         {
@@ -9692,11 +11939,11 @@ namespace onlineTroll
 
 
 
-                        //if (suno != null) { } else if (funo != float.NaN) { } else { };
+                        //if (suno != null) { } else if (funo != Double.NaN) { } else { };
                         if (suno == sdos)
                         {
 
-                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
                                 if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -9785,20 +12032,20 @@ namespace onlineTroll
                                     }
                                     else if (variablus[0].ToString().Contains("t"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         //Console.WriteLine(variablus[1]);
                                         var consolear = t[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
                                     else if (variablus[0].ToString().Contains("u"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         var consolear = u[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
                                     else if (variablus[0].ToString().Contains("v"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         var consolear = v[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
@@ -9825,7 +12072,7 @@ namespace onlineTroll
                                 }
                                 else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
-                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                     if (File.Exists(divicionenaccion[0].Substring(3)))
                                     {
                                         var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -9890,7 +12137,7 @@ namespace onlineTroll
                                     //pagina.EnsureSuccessStatusCode();
                                     var html = await pagina.Content.ReadAsStringAsync();
                                     var status1 = pagina.StatusCode.ToString();
-                                    float status;
+                                    Double status;
                                     switch (status1)
                                     {
                                         case "Accepted":
@@ -10119,7 +12366,7 @@ namespace onlineTroll
 
 
 
-                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                     //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                     ///////////////////////////////////////////
@@ -10133,7 +12380,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 a = u[int.Parse(divicionSuprema[1])];
@@ -10152,7 +12399,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 b = u[int.Parse(divicionSuprema[1])];
@@ -10171,7 +12418,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 c = u[int.Parse(divicionSuprema[1])];
@@ -10190,7 +12437,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 d = u[int.Parse(divicionSuprema[1])];
@@ -10209,7 +12456,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 e = u[int.Parse(divicionSuprema[1])];
@@ -10228,7 +12475,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 f = u[int.Parse(divicionSuprema[1])];
@@ -10247,7 +12494,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 g = u[int.Parse(divicionSuprema[1])];
@@ -10266,7 +12513,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 h = u[int.Parse(divicionSuprema[1])];
@@ -10285,7 +12532,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 i = u[int.Parse(divicionSuprema[1])];
@@ -10304,7 +12551,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 j = u[int.Parse(divicionSuprema[1])];
@@ -10323,7 +12570,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 k = t[int.Parse(divicionSuprema[1])];
@@ -10336,14 +12583,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            k = float.Parse(arrayasignacionif[0]);
+                                            k = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 l = t[int.Parse(divicionSuprema[1])];
@@ -10356,14 +12603,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            l = float.Parse(arrayasignacionif[0]);
+                                            l = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 m = t[int.Parse(divicionSuprema[1])];
@@ -10376,14 +12623,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            m = float.Parse(arrayasignacionif[0]);
+                                            m = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 n = t[int.Parse(divicionSuprema[1])];
@@ -10396,14 +12643,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            n = float.Parse(arrayasignacionif[0]);
+                                            n = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 ñ = t[int.Parse(divicionSuprema[1])];
@@ -10416,14 +12663,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            ñ = float.Parse(arrayasignacionif[0]);
+                                            ñ = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 o = t[int.Parse(divicionSuprema[1])];
@@ -10436,14 +12683,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            o = float.Parse(arrayasignacionif[0]);
+                                            o = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 p = t[int.Parse(divicionSuprema[1])];
@@ -10456,14 +12703,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            p = float.Parse(arrayasignacionif[0]);
+                                            p = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 q = t[int.Parse(divicionSuprema[1])];
@@ -10476,14 +12723,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            q = float.Parse(arrayasignacionif[0]);
+                                            q = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 r = t[int.Parse(divicionSuprema[1])];
@@ -10496,14 +12743,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            r = float.Parse(arrayasignacionif[0]);
+                                            r = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 s = t[int.Parse(divicionSuprema[1])];
@@ -10516,28 +12763,28 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            s = float.Parse(arrayasignacionif[0]);
+                                            s = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                     {
-                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                         {
                                             if (jajadivicion[zzz].Contains("NaN"))
                                             {
                                                 throw new Exception();
                                             }
-                                            t[zzz] = float.Parse(jajadivicion[zzz]);
+                                            t[zzz] = Double.Parse(jajadivicion[zzz]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                     {
-                                        u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                     {
-                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                         {
                                             v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -10547,7 +12794,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 w = v[int.Parse(divicionSuprema[1])];
@@ -10567,7 +12814,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 x = v[int.Parse(divicionSuprema[1])];
@@ -10587,7 +12834,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 y = v[int.Parse(divicionSuprema[1])];
@@ -10607,7 +12854,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 z = v[int.Parse(divicionSuprema[1])];
@@ -10628,11 +12875,234 @@ namespace onlineTroll
                                         throw new Exception();
                                     };
                                 }
-                            }
+                                else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    Environment.Exit(69);
+                                }
+                                else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                    if (varibleabuscar[0].ToString().Contains("k"))
+                                    {
+                                        Thread.Sleep(int.Parse(k.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("l"))
+                                    {
+                                        Thread.Sleep(int.Parse(l.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("m"))
+                                    {
+                                        Thread.Sleep(int.Parse(m.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("n"))
+                                    {
+                                        Thread.Sleep(int.Parse(n.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                    {
+                                        Thread.Sleep(int.Parse(ñ.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("o"))
+                                    {
+                                        Thread.Sleep(int.Parse(o.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("p"))
+                                    {
+                                        Thread.Sleep(int.Parse(p.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("q"))
+                                    {
+                                        Thread.Sleep(int.Parse(q.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("r"))
+                                    {
+                                        Thread.Sleep(int.Parse(r.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("s"))
+                                    {
+                                        Thread.Sleep(int.Parse(s.ToString()));
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                    if (variableainvertir[0].ToString().Contains("w"))
+                                    {
+                                        w = !w;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("x"))
+                                    {
+                                        x = !x;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("y"))
+                                    {
+                                        y = !y;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("z"))
+                                    {
+                                        z = !z;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s - numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s + numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                    if (variableparalacomprobacion.ToString().Contains("a"))
+                                    {
+                                        a = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("b"))
+                                    {
+                                        b = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("c"))
+                                    {
+                                        c = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("d"))
+                                    {
+                                        d = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("e"))
+                                    {
+                                        e = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("f"))
+                                    {
+                                        f = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("g"))
+                                    {
+                                        g = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("h"))
+                                    {
+                                        h = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("i"))
+                                    {
+                                        i = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("j"))
+                                    {
+                                        j = Console.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }/////////////////
+                            };
                         }
                         else if (funo == fdos)
                         {
-                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
                                 if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -10721,20 +13191,20 @@ namespace onlineTroll
                                     }
                                     else if (variablus[0].ToString().Contains("t"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         //Console.WriteLine(variablus[1]);
                                         var consolear = t[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
                                     else if (variablus[0].ToString().Contains("u"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         var consolear = u[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
                                     else if (variablus[0].ToString().Contains("v"))
                                     {
-                                        var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
                                         var consolear = v[int.Parse(numero[1].ToString())];
                                         Console.WriteLine(consolear);
                                     }
@@ -10761,7 +13231,7 @@ namespace onlineTroll
                                 }
                                 else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
-                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                     if (File.Exists(divicionenaccion[0].Substring(3)))
                                     {
                                         var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -10826,7 +13296,7 @@ namespace onlineTroll
                                     //pagina.EnsureSuccessStatusCode();
                                     var html = await pagina.Content.ReadAsStringAsync();
                                     var status1 = pagina.StatusCode.ToString();
-                                    float status;
+                                    Double status;
                                     switch (status1)
                                     {
                                         case "Accepted":
@@ -11055,7 +13525,7 @@ namespace onlineTroll
 
 
 
-                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                     //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                     ///////////////////////////////////////////
@@ -11069,7 +13539,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 a = u[int.Parse(divicionSuprema[1])];
@@ -11088,7 +13558,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 b = u[int.Parse(divicionSuprema[1])];
@@ -11107,7 +13577,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 c = u[int.Parse(divicionSuprema[1])];
@@ -11126,7 +13596,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 d = u[int.Parse(divicionSuprema[1])];
@@ -11145,7 +13615,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 e = u[int.Parse(divicionSuprema[1])];
@@ -11164,7 +13634,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 f = u[int.Parse(divicionSuprema[1])];
@@ -11183,7 +13653,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 g = u[int.Parse(divicionSuprema[1])];
@@ -11202,7 +13672,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 h = u[int.Parse(divicionSuprema[1])];
@@ -11221,7 +13691,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 i = u[int.Parse(divicionSuprema[1])];
@@ -11240,7 +13710,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("u"))
                                             {
                                                 j = u[int.Parse(divicionSuprema[1])];
@@ -11259,7 +13729,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 k = t[int.Parse(divicionSuprema[1])];
@@ -11272,14 +13742,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            k = float.Parse(arrayasignacionif[0]);
+                                            k = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 l = t[int.Parse(divicionSuprema[1])];
@@ -11292,14 +13762,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            l = float.Parse(arrayasignacionif[0]);
+                                            l = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 m = t[int.Parse(divicionSuprema[1])];
@@ -11312,14 +13782,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            m = float.Parse(arrayasignacionif[0]);
+                                            m = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 n = t[int.Parse(divicionSuprema[1])];
@@ -11332,14 +13802,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            n = float.Parse(arrayasignacionif[0]);
+                                            n = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 ñ = t[int.Parse(divicionSuprema[1])];
@@ -11352,14 +13822,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            ñ = float.Parse(arrayasignacionif[0]);
+                                            ñ = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 o = t[int.Parse(divicionSuprema[1])];
@@ -11372,14 +13842,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            o = float.Parse(arrayasignacionif[0]);
+                                            o = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 p = t[int.Parse(divicionSuprema[1])];
@@ -11392,14 +13862,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            p = float.Parse(arrayasignacionif[0]);
+                                            p = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 q = t[int.Parse(divicionSuprema[1])];
@@ -11412,14 +13882,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            q = float.Parse(arrayasignacionif[0]);
+                                            q = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 r = t[int.Parse(divicionSuprema[1])];
@@ -11432,14 +13902,14 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            r = float.Parse(arrayasignacionif[0]);
+                                            r = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("t"))
                                             {
                                                 s = t[int.Parse(divicionSuprema[1])];
@@ -11452,28 +13922,28 @@ namespace onlineTroll
                                         else
                                         {
                                             //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                            s = float.Parse(arrayasignacionif[0]);
+                                            s = Double.Parse(arrayasignacionif[0]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                     {
-                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                         {
                                             if (jajadivicion[zzz].Contains("NaN"))
                                             {
                                                 throw new Exception();
                                             }
-                                            t[zzz] = float.Parse(jajadivicion[zzz]);
+                                            t[zzz] = Double.Parse(jajadivicion[zzz]);
                                         };
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                     {
-                                        u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                     }
                                     else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                     {
-                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                         for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                         {
                                             v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -11483,7 +13953,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 w = v[int.Parse(divicionSuprema[1])];
@@ -11503,7 +13973,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 x = v[int.Parse(divicionSuprema[1])];
@@ -11523,7 +13993,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 y = v[int.Parse(divicionSuprema[1])];
@@ -11543,7 +14013,7 @@ namespace onlineTroll
                                     {
                                         if (estoesarray.IsMatch(arrayasignacionif[0]))
                                         {
-                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                             if (divicionSuprema[0][0].ToString().Contains("v"))
                                             {
                                                 z = v[int.Parse(divicionSuprema[1])];
@@ -11564,7 +14034,230 @@ namespace onlineTroll
                                         throw new Exception();
                                     };
                                 }
-                            }
+                                else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    Environment.Exit(69);
+                                }
+                                else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                    if (varibleabuscar[0].ToString().Contains("k"))
+                                    {
+                                        Thread.Sleep(int.Parse(k.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("l"))
+                                    {
+                                        Thread.Sleep(int.Parse(l.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("m"))
+                                    {
+                                        Thread.Sleep(int.Parse(m.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("n"))
+                                    {
+                                        Thread.Sleep(int.Parse(n.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                    {
+                                        Thread.Sleep(int.Parse(ñ.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("o"))
+                                    {
+                                        Thread.Sleep(int.Parse(o.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("p"))
+                                    {
+                                        Thread.Sleep(int.Parse(p.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("q"))
+                                    {
+                                        Thread.Sleep(int.Parse(q.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("r"))
+                                    {
+                                        Thread.Sleep(int.Parse(r.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("s"))
+                                    {
+                                        Thread.Sleep(int.Parse(s.ToString()));
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                    if (variableainvertir[0].ToString().Contains("w"))
+                                    {
+                                        w = !w;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("x"))
+                                    {
+                                        x = !x;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("y"))
+                                    {
+                                        y = !y;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("z"))
+                                    {
+                                        z = !z;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s - numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s + numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                    if (variableparalacomprobacion.ToString().Contains("a"))
+                                    {
+                                        a = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("b"))
+                                    {
+                                        b = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("c"))
+                                    {
+                                        c = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("d"))
+                                    {
+                                        d = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("e"))
+                                    {
+                                        e = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("f"))
+                                    {
+                                        f = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("g"))
+                                    {
+                                        g = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("h"))
+                                    {
+                                        h = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("i"))
+                                    {
+                                        i = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("j"))
+                                    {
+                                        j = Console.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }/////////////////
+                            };
                         }
                         else
                         {
@@ -11610,7 +14303,7 @@ namespace onlineTroll
                             {
                                 if (buno == true)
                                 {
-                                    var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                    var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                     for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                     {
                                         if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -11699,20 +14392,20 @@ namespace onlineTroll
                                             }
                                             else if (variablus[0].ToString().Contains("t"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 //Console.WriteLine(variablus[1]);
                                                 var consolear = t[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
                                             else if (variablus[0].ToString().Contains("u"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 var consolear = u[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
                                             else if (variablus[0].ToString().Contains("v"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 var consolear = v[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
@@ -11739,7 +14432,7 @@ namespace onlineTroll
                                         }
                                         else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                         {
-                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                             if (File.Exists(divicionenaccion[0].Substring(3)))
                                             {
                                                 var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -11804,7 +14497,7 @@ namespace onlineTroll
                                             //pagina.EnsureSuccessStatusCode();
                                             var html = await pagina.Content.ReadAsStringAsync();
                                             var status1 = pagina.StatusCode.ToString();
-                                            float status;
+                                            Double status;
                                             switch (status1)
                                             {
                                                 case "Accepted":
@@ -12033,7 +14726,7 @@ namespace onlineTroll
 
 
 
-                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                             //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                             ///////////////////////////////////////////
@@ -12047,7 +14740,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         a = u[int.Parse(divicionSuprema[1])];
@@ -12066,7 +14759,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         b = u[int.Parse(divicionSuprema[1])];
@@ -12085,7 +14778,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         c = u[int.Parse(divicionSuprema[1])];
@@ -12104,7 +14797,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         d = u[int.Parse(divicionSuprema[1])];
@@ -12123,7 +14816,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         e = u[int.Parse(divicionSuprema[1])];
@@ -12142,7 +14835,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         f = u[int.Parse(divicionSuprema[1])];
@@ -12161,7 +14854,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         g = u[int.Parse(divicionSuprema[1])];
@@ -12180,7 +14873,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         h = u[int.Parse(divicionSuprema[1])];
@@ -12199,7 +14892,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         i = u[int.Parse(divicionSuprema[1])];
@@ -12218,7 +14911,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         j = u[int.Parse(divicionSuprema[1])];
@@ -12237,7 +14930,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         k = t[int.Parse(divicionSuprema[1])];
@@ -12250,14 +14943,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    k = float.Parse(arrayasignacionif[0]);
+                                                    k = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         l = t[int.Parse(divicionSuprema[1])];
@@ -12270,14 +14963,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    l = float.Parse(arrayasignacionif[0]);
+                                                    l = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         m = t[int.Parse(divicionSuprema[1])];
@@ -12290,14 +14983,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    m = float.Parse(arrayasignacionif[0]);
+                                                    m = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         n = t[int.Parse(divicionSuprema[1])];
@@ -12310,14 +15003,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    n = float.Parse(arrayasignacionif[0]);
+                                                    n = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         ñ = t[int.Parse(divicionSuprema[1])];
@@ -12330,14 +15023,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    ñ = float.Parse(arrayasignacionif[0]);
+                                                    ñ = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         o = t[int.Parse(divicionSuprema[1])];
@@ -12350,14 +15043,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    o = float.Parse(arrayasignacionif[0]);
+                                                    o = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         p = t[int.Parse(divicionSuprema[1])];
@@ -12370,14 +15063,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    p = float.Parse(arrayasignacionif[0]);
+                                                    p = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         q = t[int.Parse(divicionSuprema[1])];
@@ -12390,14 +15083,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    q = float.Parse(arrayasignacionif[0]);
+                                                    q = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         r = t[int.Parse(divicionSuprema[1])];
@@ -12410,14 +15103,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    r = float.Parse(arrayasignacionif[0]);
+                                                    r = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         s = t[int.Parse(divicionSuprema[1])];
@@ -12430,28 +15123,28 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    s = float.Parse(arrayasignacionif[0]);
+                                                    s = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                             {
-                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                                 for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                                 {
                                                     if (jajadivicion[zzz].Contains("NaN"))
                                                     {
                                                         throw new Exception();
                                                     }
-                                                    t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                    t[zzz] = Double.Parse(jajadivicion[zzz]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                             {
-                                                u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                             {
-                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                                 for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                                 {
                                                     v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -12461,7 +15154,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         w = v[int.Parse(divicionSuprema[1])];
@@ -12481,7 +15174,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         x = v[int.Parse(divicionSuprema[1])];
@@ -12501,7 +15194,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         y = v[int.Parse(divicionSuprema[1])];
@@ -12521,7 +15214,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         z = v[int.Parse(divicionSuprema[1])];
@@ -12542,15 +15235,237 @@ namespace onlineTroll
                                                 throw new Exception();
                                             };
                                         }
-                                    }
+                                        else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            Environment.Exit(69);
+                                        }
+                                        else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                            if (varibleabuscar[0].ToString().Contains("k"))
+                                            {
+                                                Thread.Sleep(int.Parse(k.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("l"))
+                                            {
+                                                Thread.Sleep(int.Parse(l.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("m"))
+                                            {
+                                                Thread.Sleep(int.Parse(m.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("n"))
+                                            {
+                                                Thread.Sleep(int.Parse(n.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                            {
+                                                Thread.Sleep(int.Parse(ñ.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("o"))
+                                            {
+                                                Thread.Sleep(int.Parse(o.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("p"))
+                                            {
+                                                Thread.Sleep(int.Parse(p.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("q"))
+                                            {
+                                                Thread.Sleep(int.Parse(q.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("r"))
+                                            {
+                                                Thread.Sleep(int.Parse(r.ToString()));
+                                            }
+                                            else if (varibleabuscar[0].ToString().Contains("s"))
+                                            {
+                                                Thread.Sleep(int.Parse(s.ToString()));
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                            if (variableainvertir[0].ToString().Contains("w"))
+                                            {
+                                                w = !w;
+                                            }
+                                            else if (variableainvertir[0].ToString().Contains("x"))
+                                            {
+                                                x = !x;
+                                            }
+                                            else if (variableainvertir[0].ToString().Contains("y"))
+                                            {
+                                                y = !y;
+                                            }
+                                            else if (variableainvertir[0].ToString().Contains("z"))
+                                            {
+                                                z = !z;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                            if (variableaferificar.ToString().Contains("k"))
+                                            {
+                                                k = k - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("l"))
+                                            {
+                                                l = l - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("m"))
+                                            {
+                                                m = m - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("n"))
+                                            {
+                                                n = n - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("ñ"))
+                                            {
+                                                ñ = ñ - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("o"))
+                                            {
+                                                o = o - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("p"))
+                                            {
+                                                p = p - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("q"))
+                                            {
+                                                q = q - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("r"))
+                                            {
+                                                r = r - numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("s"))
+                                            {
+                                                s = s - numeroparalamodificacion;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                            if (variableaferificar.ToString().Contains("k"))
+                                            {
+                                                k = k + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("l"))
+                                            {
+                                                l = l + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("m"))
+                                            {
+                                                m = m + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("n"))
+                                            {
+                                                n = n + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("ñ"))
+                                            {
+                                                ñ = ñ + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("o"))
+                                            {
+                                                o = o + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("p"))
+                                            {
+                                                p = p + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("q"))
+                                            {
+                                                q = q + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("r"))
+                                            {
+                                                r = r + numeroparalamodificacion;
+                                            }
+                                            else if (variableaferificar.ToString().Contains("s"))
+                                            {
+                                                s = s + numeroparalamodificacion;
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                        {
+                                            var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                            if (variableparalacomprobacion.ToString().Contains("a"))
+                                            {
+                                                a = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("b"))
+                                            {
+                                                b = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("c"))
+                                            {
+                                                c = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("d"))
+                                            {
+                                                d = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("e"))
+                                            {
+                                                e = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("f"))
+                                            {
+                                                f = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("g"))
+                                            {
+                                                g = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("h"))
+                                            {
+                                                h = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("i"))
+                                            {
+                                                i = Console.ReadLine();
+                                            }
+                                            else if (variableparalacomprobacion.ToString().Contains("j"))
+                                            {
+                                                j = Console.ReadLine();
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }/////////////////
+                                    };
                                 };
                             }
                             else if (buno == false)
                             {
                                 if (buno == false)
                                 {
-                                    
-                                    var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "\uFFFF").Split('\uFFFF');
+                                    var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                                     for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                                     {
                                         if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -12639,20 +15554,20 @@ namespace onlineTroll
                                             }
                                             else if (variablus[0].ToString().Contains("t"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 //Console.WriteLine(variablus[1]);
                                                 var consolear = t[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
                                             else if (variablus[0].ToString().Contains("u"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 var consolear = u[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
                                             else if (variablus[0].ToString().Contains("v"))
                                             {
-                                                var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                var numero = variablus.Replace("-_-", "�").Split('�');
                                                 var consolear = v[int.Parse(numero[1].ToString())];
                                                 Console.WriteLine(consolear);
                                             }
@@ -12679,7 +15594,7 @@ namespace onlineTroll
                                         }
                                         else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
                                         {
-                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "\uFFFF").Split('\uFFFF');
+                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
                                             if (File.Exists(divicionenaccion[0].Substring(3)))
                                             {
                                                 var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -12744,7 +15659,7 @@ namespace onlineTroll
                                             //pagina.EnsureSuccessStatusCode();
                                             var html = await pagina.Content.ReadAsStringAsync();
                                             var status1 = pagina.StatusCode.ToString();
-                                            float status;
+                                            Double status;
                                             switch (status1)
                                             {
                                                 case "Accepted":
@@ -12973,7 +15888,7 @@ namespace onlineTroll
 
 
 
-                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
                                             //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
 
                                             ///////////////////////////////////////////
@@ -12987,7 +15902,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         a = u[int.Parse(divicionSuprema[1])];
@@ -13006,7 +15921,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         b = u[int.Parse(divicionSuprema[1])];
@@ -13025,7 +15940,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         c = u[int.Parse(divicionSuprema[1])];
@@ -13044,7 +15959,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         d = u[int.Parse(divicionSuprema[1])];
@@ -13063,7 +15978,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         e = u[int.Parse(divicionSuprema[1])];
@@ -13082,7 +15997,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         f = u[int.Parse(divicionSuprema[1])];
@@ -13101,7 +16016,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         g = u[int.Parse(divicionSuprema[1])];
@@ -13120,7 +16035,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         h = u[int.Parse(divicionSuprema[1])];
@@ -13139,7 +16054,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         i = u[int.Parse(divicionSuprema[1])];
@@ -13158,7 +16073,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("u"))
                                                     {
                                                         j = u[int.Parse(divicionSuprema[1])];
@@ -13177,7 +16092,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         k = t[int.Parse(divicionSuprema[1])];
@@ -13190,14 +16105,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    k = float.Parse(arrayasignacionif[0]);
+                                                    k = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("l"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         l = t[int.Parse(divicionSuprema[1])];
@@ -13210,14 +16125,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    l = float.Parse(arrayasignacionif[0]);
+                                                    l = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("m"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         m = t[int.Parse(divicionSuprema[1])];
@@ -13230,14 +16145,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    m = float.Parse(arrayasignacionif[0]);
+                                                    m = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("n"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         n = t[int.Parse(divicionSuprema[1])];
@@ -13250,14 +16165,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    n = float.Parse(arrayasignacionif[0]);
+                                                    n = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         ñ = t[int.Parse(divicionSuprema[1])];
@@ -13270,14 +16185,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    ñ = float.Parse(arrayasignacionif[0]);
+                                                    ñ = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("o"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         o = t[int.Parse(divicionSuprema[1])];
@@ -13290,14 +16205,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    o = float.Parse(arrayasignacionif[0]);
+                                                    o = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("p"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         p = t[int.Parse(divicionSuprema[1])];
@@ -13310,14 +16225,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    p = float.Parse(arrayasignacionif[0]);
+                                                    p = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("q"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         q = t[int.Parse(divicionSuprema[1])];
@@ -13330,14 +16245,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    q = float.Parse(arrayasignacionif[0]);
+                                                    q = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("r"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         r = t[int.Parse(divicionSuprema[1])];
@@ -13350,14 +16265,14 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    r = float.Parse(arrayasignacionif[0]);
+                                                    r = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("s"))
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("t"))
                                                     {
                                                         s = t[int.Parse(divicionSuprema[1])];
@@ -13370,28 +16285,28 @@ namespace onlineTroll
                                                 else
                                                 {
                                                     //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    s = float.Parse(arrayasignacionif[0]);
+                                                    s = Double.Parse(arrayasignacionif[0]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("t"))
                                             {
-                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                                 for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                                                 {
                                                     if (jajadivicion[zzz].Contains("NaN"))
                                                     {
                                                         throw new Exception();
                                                     }
-                                                    t[zzz] = float.Parse(jajadivicion[zzz]);
+                                                    t[zzz] = Double.Parse(jajadivicion[zzz]);
                                                 };
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("u"))
                                             {
-                                                u = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                             }
                                             else if (arrayasignacionif[1][0].ToString().Contains("v"))
                                             {
-                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
                                                 for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                                                 {
                                                     v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -13401,7 +16316,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         w = v[int.Parse(divicionSuprema[1])];
@@ -13421,7 +16336,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         x = v[int.Parse(divicionSuprema[1])];
@@ -13441,7 +16356,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         y = v[int.Parse(divicionSuprema[1])];
@@ -13461,7 +16376,7 @@ namespace onlineTroll
                                             {
                                                 if (estoesarray.IsMatch(arrayasignacionif[0]))
                                                 {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
                                                     if (divicionSuprema[0][0].ToString().Contains("v"))
                                                     {
                                                         z = v[int.Parse(divicionSuprema[1])];
@@ -13579,20 +16494,20 @@ namespace onlineTroll
                         }
                         else if (variablus[0].ToString().Contains("t"))
                         {
-                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                            var numero = variablus.Replace("-_-", "�").Split('�');
                             //Console.WriteLine(variablus[1]);
                             var consolear = t[int.Parse(numero[1].ToString())];
                             Console.WriteLine(consolear);
                         }
                         else if (variablus[0].ToString().Contains("u"))
                         {
-                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                            var numero = variablus.Replace("-_-", "�").Split('�');
                             var consolear = u[int.Parse(numero[1].ToString())];
                             Console.WriteLine(consolear);
                         }
                         else if (variablus[0].ToString().Contains("v"))
                         {
-                            var numero = variablus.Replace("-_-", "\uFFFF").Split('\uFFFF');
+                            var numero = variablus.Replace("-_-", "�").Split('�');
                             var consolear = v[int.Parse(numero[1].ToString())];
                             Console.WriteLine(consolear);
                         }
@@ -13619,7 +16534,7 @@ namespace onlineTroll
                     }
                     else if (archivus.IsMatch(diviciondecodigo[xxx]))
                     {
-                        var divicionenaccion = diviciondecodigo[xxx].Replace("csis", "\uFFFF").Split('\uFFFF');
+                        var divicionenaccion = diviciondecodigo[xxx].Replace("csis", "�").Split('�');
                         if (File.Exists(divicionenaccion[0].Substring(3)))
                         {
                             var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
@@ -13684,7 +16599,7 @@ namespace onlineTroll
                         //pagina.EnsureSuccessStatusCode();
                         var html = await pagina.Content.ReadAsStringAsync();
                         var status1 = pagina.StatusCode.ToString();
-                        float status;
+                        Double status;
                         switch (status1)
                         {
                             case "Accepted":
@@ -13913,7 +16828,7 @@ namespace onlineTroll
 
 
 
-                        string[] arrayasignacion = diviciondecodigo[xxx].Replace("¨ç]", "\uFFFF").Split('\uFFFF');
+                        string[] arrayasignacion = diviciondecodigo[xxx].Replace("¨ç]", "�").Split('�');
                         //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacion[1]);
 
                         ///////////////////////////////////////////
@@ -13927,7 +16842,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     a = u[int.Parse(divicionSuprema[1])];
@@ -13946,7 +16861,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     b = u[int.Parse(divicionSuprema[1])];
@@ -13965,7 +16880,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     c = u[int.Parse(divicionSuprema[1])];
@@ -13984,7 +16899,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     d = u[int.Parse(divicionSuprema[1])];
@@ -14003,7 +16918,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     e = u[int.Parse(divicionSuprema[1])];
@@ -14022,7 +16937,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     f = u[int.Parse(divicionSuprema[1])];
@@ -14041,7 +16956,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     g = u[int.Parse(divicionSuprema[1])];
@@ -14060,7 +16975,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     h = u[int.Parse(divicionSuprema[1])];
@@ -14079,7 +16994,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     i = u[int.Parse(divicionSuprema[1])];
@@ -14098,7 +17013,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("u"))
                                 {
                                     j = u[int.Parse(divicionSuprema[1])];
@@ -14117,7 +17032,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     k = t[int.Parse(divicionSuprema[1])];
@@ -14130,14 +17045,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                k = float.Parse(arrayasignacion[0]);
+                                k = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("l"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     l = t[int.Parse(divicionSuprema[1])];
@@ -14150,14 +17065,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                l = float.Parse(arrayasignacion[0]);
+                                l = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("m"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     m = t[int.Parse(divicionSuprema[1])];
@@ -14170,14 +17085,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                m = float.Parse(arrayasignacion[0]);
+                                m = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("n"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     n = t[int.Parse(divicionSuprema[1])];
@@ -14190,14 +17105,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                n = float.Parse(arrayasignacion[0]);
+                                n = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("ñ"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     ñ = t[int.Parse(divicionSuprema[1])];
@@ -14210,14 +17125,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                ñ = float.Parse(arrayasignacion[0]);
+                                ñ = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("o"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     o = t[int.Parse(divicionSuprema[1])];
@@ -14230,14 +17145,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                o = float.Parse(arrayasignacion[0]);
+                                o = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("p"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     p = t[int.Parse(divicionSuprema[1])];
@@ -14250,14 +17165,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                p = float.Parse(arrayasignacion[0]);
+                                p = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("q"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     q = t[int.Parse(divicionSuprema[1])];
@@ -14270,14 +17185,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                q = float.Parse(arrayasignacion[0]);
+                                q = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("r"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     r = t[int.Parse(divicionSuprema[1])];
@@ -14290,14 +17205,14 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                r = float.Parse(arrayasignacion[0]);
+                                r = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("s"))
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("t"))
                                 {
                                     s = t[int.Parse(divicionSuprema[1])];
@@ -14310,28 +17225,28 @@ namespace onlineTroll
                             else
                             {
                                 //if (arrayasignacion[0] == "NaN") throw new Exception();
-                                s = float.Parse(arrayasignacion[0]);
+                                s = Double.Parse(arrayasignacion[0]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("t"))
                         {
-                            var jajadivicion = arrayasignacion[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                            var jajadivicion = arrayasignacion[0].Replace("º-/*", "�").Split('�');
                             for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
                             {
                                 if (jajadivicion[zzz].Contains("NaN"))
                                 {
                                     throw new Exception();
                                 }
-                                t[zzz] = float.Parse(jajadivicion[zzz]);
+                                t[zzz] = Double.Parse(jajadivicion[zzz]);
                             };
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("u"))
                         {
-                            u = arrayasignacion[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                            u = arrayasignacion[0].Replace("º-/*", "�").Split('�');
                         }
                         else if (arrayasignacion[1][0].ToString().Contains("v"))
                         {
-                            var jajadivicion2 = arrayasignacion[0].Replace("º-/*", "\uFFFF").Split('\uFFFF');
+                            var jajadivicion2 = arrayasignacion[0].Replace("º-/*", "�").Split('�');
                             for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
                             {
                                 v[zzz] = bool.Parse(jajadivicion2[zzz]);
@@ -14341,7 +17256,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                 {
                                     w = v[int.Parse(divicionSuprema[1])];
@@ -14361,7 +17276,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                 {
                                     x = v[int.Parse(divicionSuprema[1])];
@@ -14381,7 +17296,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                 {
                                     y = v[int.Parse(divicionSuprema[1])];
@@ -14401,7 +17316,7 @@ namespace onlineTroll
                         {
                             if (estoesarray.IsMatch(arrayasignacion[0]))
                             {
-                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "\uFFFF").Split('\uFFFF');
+                                var divicionSuprema = arrayasignacion[0].Replace("-_-", "�").Split('�');
                                 if (divicionSuprema[0][0].ToString().Contains("v"))
                                 {
                                     z = v[int.Parse(divicionSuprema[1])];
@@ -14428,6 +17343,232 @@ namespace onlineTroll
 
 
                     }
+                    else if (salir.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        Environment.Exit(69);
+                    }
+                    else if (sleep.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        var varibleabuscar = diviciondecodigo[xxx].Replace("çlbv", "");
+
+                        if (varibleabuscar[0].ToString().Contains("k"))
+                        {
+                            Thread.Sleep(int.Parse(k.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("l"))
+                        {
+                            Thread.Sleep(int.Parse(l.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("m"))
+                        {
+                            Thread.Sleep(int.Parse(m.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("n"))
+                        {
+                            Thread.Sleep(int.Parse(n.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("ñ"))
+                        {
+                            Thread.Sleep(int.Parse(ñ.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("o"))
+                        {
+                            Thread.Sleep(int.Parse(o.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("p"))
+                        {
+                            Thread.Sleep(int.Parse(p.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("q"))
+                        {
+                            Thread.Sleep(int.Parse(q.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("r"))
+                        {
+                            Thread.Sleep(int.Parse(r.ToString()));
+                        }
+                        else if (varibleabuscar[0].ToString().Contains("s"))
+                        {
+                            Thread.Sleep(int.Parse(s.ToString()));
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                    else if (invertirbool.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        var variableainvertir = diviciondecodigo[xxx].Replace("!7;", "");
+                        if (variableainvertir[0].ToString().Contains("w"))
+                        {
+                            w = !w;
+                        }
+                        else if (variableainvertir[0].ToString().Contains("x"))
+                        {
+                            x = !x;
+                        }
+                        else if (variableainvertir[0].ToString().Contains("y"))
+                        {
+                            y = !y;
+                        }
+                        else if (variableainvertir[0].ToString().Contains("z"))
+                        {
+                            z = !z;
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                    else if (restare.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        var variableaferificar = diviciondecodigo[xxx][0];
+                        var numeroparalamodificacion = int.Parse(diviciondecodigo[xxx].Substring("__RPD.".Length));
+                        if (variableaferificar.ToString().Contains("k"))
+                        {
+                            k = k - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("l"))
+                        {
+                            l = l - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("m"))
+                        {
+                            m = m - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("n"))
+                        {
+                            n = n - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("ñ"))
+                        {
+                            ñ = ñ - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("o"))
+                        {
+                            o = o - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("p"))
+                        {
+                            p = p - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("q"))
+                        {
+                            q = q - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("r"))
+                        {
+                            r = r - numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("s"))
+                        {
+                            s = s - numeroparalamodificacion;
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                    else if (sumedore.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        var variableaferificar = diviciondecodigo[xxx][0];
+                        var numeroparalamodificacion = int.Parse(diviciondecodigo[xxx].Substring("__RPD.".Length));
+                        if (variableaferificar.ToString().Contains("k"))
+                        {
+                            k = k + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("l"))
+                        {
+                            l = l + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("m"))
+                        {
+                            m = m + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("n"))
+                        {
+                            n = n + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("ñ"))
+                        {
+                            ñ = ñ + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("o"))
+                        {
+                            o = o + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("p"))
+                        {
+                            p = p + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("q"))
+                        {
+                            q = q + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("r"))
+                        {
+                            r = r + numeroparalamodificacion;
+                        }
+                        else if (variableaferificar.ToString().Contains("s"))
+                        {
+                            s = s + numeroparalamodificacion;
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                    else if (consolaentrada.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        
+                        var variableparalacomprobacion = diviciondecodigo[xxx][0];
+                        
+                        if (variableparalacomprobacion.ToString().Contains("a"))
+                        {
+                            //Console.WriteLine(variableparalacomprobacion);
+                            a = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("b"))
+                        {
+                            b = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("c"))
+                        {
+                            c = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("d"))
+                        {
+                            d = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("e"))
+                        {
+                            e = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("f"))
+                        {
+                            f = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("g"))
+                        {
+                            g = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("h"))
+                        {
+                            h = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("i"))
+                        {
+                            i = Console.ReadLine();
+                        }
+                        else if (variableparalacomprobacion.ToString().Contains("j"))
+                        {
+                            j = Console.ReadLine();
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }/////////////////
                     else
                     {
                         throw new Exception();
@@ -14440,9 +17581,9 @@ namespace onlineTroll
             catch (Exception x)
             {
                 Console.Title = "Troll Script";
-                //Console.Clear();
+                Console.Clear();
                 Console.WriteLine("Fracasaste, simplemento no pudiste usar este lenguaje, vuelve cuando seas un robot");
-                Console.WriteLine(x);
+                //Console.WriteLine(x);
                 while (true) { };
             };
         }
