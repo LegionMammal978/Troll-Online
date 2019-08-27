@@ -42,7 +42,7 @@ v array (bool)
 
 wxyz (bool)
 
-para definir una variable debes utilizar ¨ç]
+Para añadir un valor a una variable debes usar ¨ç]
 
 ```tllonline
 VALOR¨ç]VARIABLE
