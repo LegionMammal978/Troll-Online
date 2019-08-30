@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/jc3kd6aurakhnlt/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/4knvob8nmyl7m77/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/hbeba857fgi9sr8/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/01y51dzejeskdvx/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -178,11 +178,23 @@ Ejemplo:
 &{-
 ```
 
+### expresiones regulares
+
+Una expresión regular, o expresión racional,1​2​ es una secuencia de caracteres que conforma un patrón de búsqueda. -wikipedia
+
+#### remplace
+
+Para remplasar una parte de un string mediante una exprecion regular debes usar ¨#\_\_VARIABLE1\_EXP\_VARIABLE2\_VARIABLE3 siendo la variable1 el texto a modificar, el EXP la expresion regular, variable2 como el texto a colocar y variable3 como la variable donde se almacena el resultado de todo esto.
+
+#### match
+
+Para hacer el match \_\_kpEXP\_VARIABLE1\_VARIABLE2 siendo EXP la expresion regular, variable1 la variable donde buscar y variable2 que sirve para almacenar true o false dependiendo el resultado.
+
 ## Proximamente
 
 + Funcion para generar repeticiones a base de un x tiempo en otro hilo de ejecucion.
 + Funcion de extracion de caracteres para strings.
-+ Expreciones regulares y su match y remplace.
++ websocket (actualizacion lejana)
 
 **Esperen estos cambios los proximos meses**
 
