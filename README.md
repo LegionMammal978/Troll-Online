@@ -1,5 +1,7 @@
 # Troll-Online
 
+# esperen actualizacion no usar esta version contiende bugs
+
 ## Descargar
 
 Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/4knvob8nmyl7m77/Troll_Online_x64_Setup.exe/file)
