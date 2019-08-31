@@ -1,12 +1,10 @@
 # Troll-Online
 
-# esperen actualizacion no usar esta version contiende bugs
-
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/4knvob8nmyl7m77/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/5281rgasefywqj9/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/01y51dzejeskdvx/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/ry0j3eprz60luw6/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -131,8 +129,11 @@ l},ºVARIABLE => para poner la variable a almacenar el sitio web (html).
 ¿LINK => El sitio web en forma de url no de variables
 
 ¿AUTORIZACION => El header de "Authorization" en forma de texto no de variable 
+
+¿METODO|contenido => primero indicas el metodo (get delete post put) y en el estricto caso de que necesites enviar html o contenido extra en la peticion pon __|lo que necesites__ en caso contrario no pongas nada
+
 ```tllonline
-l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION
+l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO
 ```
 
 **Ningun apuntador es opcional**
