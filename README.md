@@ -189,9 +189,19 @@ Una expresión regular, o expresión racional,1​2​ es una secuencia de carac
 
 Para remplasar una parte de un string mediante una exprecion regular debes usar ¨#\_\_VARIABLE1\_EXP\_VARIABLE2\_VARIABLE3 siendo la variable1 el texto a modificar, el EXP la expresion regular, variable2 como el texto a colocar y variable3 como la variable donde se almacena el resultado de todo esto.
 
+Ejemplo:
+```tllonline
+¨#__VARIABLE_EXP_VARIABLE2_VARIABLE3
+```
+
 #### match
 
 Para hacer el match \_\_kpEXP\_VARIABLE1\_VARIABLE2 siendo EXP la expresion regular, variable1 la variable donde buscar y variable2 que sirve para almacenar true o false dependiendo el resultado.
+
+Ejemplo:
+```tllonline
+__kpEXP_VARIABLE_VARIABLE2
+```
 
 ## Proximamente
 
