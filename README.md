@@ -130,7 +130,7 @@ l},ºVARIABLE => para poner la variable a almacenar el sitio web (html).
 
 ¿AUTORIZACION => El header de "Authorization" en forma de texto no de variable 
 
-¿METODO|contenido => primero indicas el metodo (get delete post put) y en el estricto caso de que necesites enviar html o contenido extra en la peticion pon __|lo que necesites__ en caso contrario no pongas nada
+¿METODO|contenido => primero indicas el metodo (get delete post put) y en el estricto caso de que necesites enviar html o contenido extra en la peticion pon __|lo que necesites__
 
 ```tllonline
 l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO
