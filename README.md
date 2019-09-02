@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/srwvcu07dct9v2o/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/wxmi66ugvose9dw/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/f222gprt0b8gev8/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/m5robbfdwi9q6z3/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -130,10 +130,13 @@ l},ºVARIABLE => para poner la variable a almacenar el sitio web (html).
 
 ¿AUTORIZACION => El header de "Authorization" en forma de texto no de variable 
 
-¿METODO|contenido => primero indicas el metodo (get delete post put) y en el estricto caso de que necesites enviar html o contenido extra en la peticion pon __|lo que necesites__
+¿METODO|contenido|Content-Type => primero indicas el metodo (get delete post put (no se diferencian mayusculas y minusculas)) y en el estricto caso de que necesites enviar json o contenido extra en la peticion pon __|lo que necesites|Content Type__
 
 ```tllonline
 l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO
+l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿gEt
+l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO|lo que necesites|Content Type
+l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿put|{}|application/json
 ```
 
 **Ningun apuntador es opcional**
