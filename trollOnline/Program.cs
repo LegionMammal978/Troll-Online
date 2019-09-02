@@ -126,7 +126,7 @@ namespace onlineTroll
                 var consolaentrada = new Regex(".👉👌");
                 var remplazar = new Regex("¨#__._.+_._.");
                 var match = new Regex("__kp.+_._.");
-
+                var editarchivus = new Regex(".+👌👈.");
 
                 for (var xxx = 0; xxx < diviciondecodigo.Length; xxx++)
                 {
@@ -333,39 +333,39 @@ namespace onlineTroll
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -1617,6 +1617,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -1816,44 +1871,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -3105,12 +3162,68 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
                                     };
                                 }
                             };
+
 
                         }
                         else if (repeticiones.Contains("m"))
@@ -3304,44 +3417,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -4593,12 +4708,68 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
                                     };
                                 }
                             };
+
 
                         }
                         else if (repeticiones.Contains("n"))
@@ -4792,44 +4963,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -6081,6 +6254,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -6280,44 +6508,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -7569,6 +7799,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -7768,44 +8053,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -9057,6 +9344,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -9256,44 +9598,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -10545,6 +10889,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -10744,44 +11143,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -12033,6 +12434,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -12232,44 +12688,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -13521,6 +13979,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -13720,44 +14233,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                            };
+                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                        {
+                                            pagina = await conexion.GetAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                        {
+                                            pagina = await conexion.DeleteAsync(link);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                        {
+                                            var peticion = new HttpRequestMessage();
+                                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                                            conexion.BaseAddress = new Uri(link);
+                                            peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            pagina = await conexion.SendAsync(peticion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                        };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -15009,6 +15524,61 @@ namespace onlineTroll
                                         };
 
                                     }////////////////
+                                    else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                    {
+                                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                                        if (File.Exists(arrayedit[0]))
+                                        {
+                                            if (arrayedit[1][0].ToString().Contains("a"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], a);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("b"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], b);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("c"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], c);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("d"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], d);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("e"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], e);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("f"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], f);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("g"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], g);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("h"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], h);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("i"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], i);
+                                            }
+                                            else if (arrayedit[1][0].ToString().Contains("j"))
+                                            {
+                                                File.WriteAllText(arrayedit[0], j);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
                                     else
                                     {
                                         throw new Exception();
@@ -15188,8 +15758,9 @@ namespace onlineTroll
                         //if (suno != null) { } else if (funo != Double.NaN) { } else { };
                         if (suno != null && sdos != null)
                         {
-                            if(suno == sdos){
-                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
+                            if (suno == sdos)
+                            {
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
                                 if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -15395,7 +15966,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -15405,7 +15976,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -16664,17 +17235,74 @@ namespace onlineTroll
                                     };
 
                                 }////////////////
+                                else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                    {
+                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                        if (File.Exists(arrayedit[0]))
+                        {
+                            if (arrayedit[1][0].ToString().Contains("a"))
+                            {
+                                File.WriteAllText(arrayedit[0], a);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("b"))
+                            {
+                                File.WriteAllText(arrayedit[0], b);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("c"))
+                            {
+                                File.WriteAllText(arrayedit[0], c);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("d"))
+                            {
+                                File.WriteAllText(arrayedit[0], d);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("e"))
+                            {
+                                File.WriteAllText(arrayedit[0], e);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("f"))
+                            {
+                                File.WriteAllText(arrayedit[0], f);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("g"))
+                            {
+                                File.WriteAllText(arrayedit[0], g);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("h"))
+                            {
+                                File.WriteAllText(arrayedit[0], h);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("i"))
+                            {
+                                File.WriteAllText(arrayedit[0], i);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("j"))
+                            {
+                                File.WriteAllText(arrayedit[0], j);
+                            }
+                            else
+                            {
+                                throw new Exception();
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
                                 else
                                 {
                                     throw new Exception();
                                 };
                             };
-};
+                        
+                            };
                         }
                         else if (funo != Double.NaN && Double.NaN != fdos)
                         {
-                            if(funo == fdos){
-                            var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
+                            if (funo == fdos)
+                            {
+                                var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
                                 if (consola.IsMatch(nuevocodigo[controladordenuevo]))
@@ -16880,7 +17508,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -16890,7 +17518,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -18149,12 +18777,68 @@ namespace onlineTroll
                                     };
 
                                 }////////////////
+                                else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                    {
+                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                        if (File.Exists(arrayedit[0]))
+                        {
+                            if (arrayedit[1][0].ToString().Contains("a"))
+                            {
+                                File.WriteAllText(arrayedit[0], a);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("b"))
+                            {
+                                File.WriteAllText(arrayedit[0], b);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("c"))
+                            {
+                                File.WriteAllText(arrayedit[0], c);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("d"))
+                            {
+                                File.WriteAllText(arrayedit[0], d);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("e"))
+                            {
+                                File.WriteAllText(arrayedit[0], e);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("f"))
+                            {
+                                File.WriteAllText(arrayedit[0], f);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("g"))
+                            {
+                                File.WriteAllText(arrayedit[0], g);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("h"))
+                            {
+                                File.WriteAllText(arrayedit[0], h);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("i"))
+                            {
+                                File.WriteAllText(arrayedit[0], i);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("j"))
+                            {
+                                File.WriteAllText(arrayedit[0], j);
+                            }
+                            else
+                            {
+                                throw new Exception();
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
                                 else
                                 {
                                     throw new Exception();
                                 };
                             };
-};
+                        
+                            };
                         }
                         else
                         {
@@ -18206,196 +18890,196 @@ namespace onlineTroll
                                 if (bdos == true)
                                 {
                                     var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
-                                    for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
+                            for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
+                            {
+                                if (consola.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variablus = nuevocodigo[controladordenuevo].Replace("↓ùp👌", "");
+                                    //Console.WriteLine(variablus.Length);
+                                    if (variablus[0].ToString().Contains("a"))
                                     {
-                                        if (consola.IsMatch(nuevocodigo[controladordenuevo]))
+                                        Console.WriteLine(a);
+                                    }
+                                    else if (variablus[0].ToString().Contains("b"))
+                                    {
+                                        Console.WriteLine(b);
+                                    }
+                                    else if (variablus[0].ToString().Contains("c"))
+                                    {
+                                        Console.WriteLine(c);
+                                    }
+                                    else if (variablus[0].ToString().Contains("d"))
+                                    {
+                                        Console.WriteLine(d);
+                                    }
+                                    else if (variablus[0].ToString().Contains("e"))
+                                    {
+                                        Console.WriteLine(e);
+                                    }
+                                    else if (variablus[0].ToString().Contains("f"))
+                                    {
+                                        Console.WriteLine(f);
+                                    }
+                                    else if (variablus[0].ToString().Contains("g"))
+                                    {
+                                        Console.WriteLine(g);
+                                    }
+                                    else if (variablus[0].ToString().Contains("h"))
+                                    {
+                                        Console.WriteLine(h);
+                                    }
+                                    else if (variablus[0].ToString().Contains("i"))
+                                    {
+                                        Console.WriteLine(i);
+                                    }
+                                    else if (variablus[0].ToString().Contains("j"))
+                                    {
+                                        Console.WriteLine(j);
+                                    }
+                                    else if (variablus[0].ToString().Contains("k"))
+                                    {
+                                        Console.WriteLine(k);
+                                    }
+                                    else if (variablus[0].ToString().Contains("l"))
+                                    {
+                                        Console.WriteLine(l);
+                                    }
+                                    else if (variablus[0].ToString().Contains("m"))
+                                    {
+                                        Console.WriteLine(m);
+                                    }
+                                    else if (variablus[0].ToString().Contains("n"))
+                                    {
+                                        Console.WriteLine(n);
+                                    }
+                                    else if (variablus[0].ToString().Contains("ñ"))
+                                    {
+                                        Console.WriteLine(ñ);
+                                    }
+                                    else if (variablus[0].ToString().Contains("o"))
+                                    {
+                                        Console.WriteLine(o);
+                                    }
+                                    else if (variablus[0].ToString().Contains("p"))
+                                    {
+                                        Console.WriteLine(p);
+                                    }
+                                    else if (variablus[0].ToString().Contains("q"))
+                                    {
+                                        Console.WriteLine(q);
+                                    }
+                                    else if (variablus[0].ToString().Contains("r"))
+                                    {
+                                        Console.WriteLine(r);
+                                    }
+                                    else if (variablus[0].ToString().Contains("s"))
+                                    {
+                                        Console.WriteLine(s);
+                                    }
+                                    else if (variablus[0].ToString().Contains("t"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        //Console.WriteLine(variablus[1]);
+                                        var consolear = t[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("u"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        var consolear = u[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("v"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        var consolear = v[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("w"))
+                                    {
+                                        Console.WriteLine(w);
+                                    }
+                                    else if (variablus[0].ToString().Contains("x"))
+                                    {
+                                        Console.WriteLine(x);
+                                    }
+                                    else if (variablus[0].ToString().Contains("y"))
+                                    {
+                                        Console.WriteLine(y);
+                                    }
+                                    else if (variablus[0].ToString().Contains("z"))
+                                    {
+                                        Console.WriteLine(z);
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
+                                    if (File.Exists(divicionenaccion[0].Substring(3)))
+                                    {
+                                        var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
+                                        if (divicionenaccion[1].ToString().Contains("a"))
                                         {
-                                            var variablus = nuevocodigo[controladordenuevo].Replace("↓ùp👌", "");
-                                            //Console.WriteLine(variablus.Length);
-                                            if (variablus[0].ToString().Contains("a"))
-                                            {
-                                                Console.WriteLine(a);
-                                            }
-                                            else if (variablus[0].ToString().Contains("b"))
-                                            {
-                                                Console.WriteLine(b);
-                                            }
-                                            else if (variablus[0].ToString().Contains("c"))
-                                            {
-                                                Console.WriteLine(c);
-                                            }
-                                            else if (variablus[0].ToString().Contains("d"))
-                                            {
-                                                Console.WriteLine(d);
-                                            }
-                                            else if (variablus[0].ToString().Contains("e"))
-                                            {
-                                                Console.WriteLine(e);
-                                            }
-                                            else if (variablus[0].ToString().Contains("f"))
-                                            {
-                                                Console.WriteLine(f);
-                                            }
-                                            else if (variablus[0].ToString().Contains("g"))
-                                            {
-                                                Console.WriteLine(g);
-                                            }
-                                            else if (variablus[0].ToString().Contains("h"))
-                                            {
-                                                Console.WriteLine(h);
-                                            }
-                                            else if (variablus[0].ToString().Contains("i"))
-                                            {
-                                                Console.WriteLine(i);
-                                            }
-                                            else if (variablus[0].ToString().Contains("j"))
-                                            {
-                                                Console.WriteLine(j);
-                                            }
-                                            else if (variablus[0].ToString().Contains("k"))
-                                            {
-                                                Console.WriteLine(k);
-                                            }
-                                            else if (variablus[0].ToString().Contains("l"))
-                                            {
-                                                Console.WriteLine(l);
-                                            }
-                                            else if (variablus[0].ToString().Contains("m"))
-                                            {
-                                                Console.WriteLine(m);
-                                            }
-                                            else if (variablus[0].ToString().Contains("n"))
-                                            {
-                                                Console.WriteLine(n);
-                                            }
-                                            else if (variablus[0].ToString().Contains("ñ"))
-                                            {
-                                                Console.WriteLine(ñ);
-                                            }
-                                            else if (variablus[0].ToString().Contains("o"))
-                                            {
-                                                Console.WriteLine(o);
-                                            }
-                                            else if (variablus[0].ToString().Contains("p"))
-                                            {
-                                                Console.WriteLine(p);
-                                            }
-                                            else if (variablus[0].ToString().Contains("q"))
-                                            {
-                                                Console.WriteLine(q);
-                                            }
-                                            else if (variablus[0].ToString().Contains("r"))
-                                            {
-                                                Console.WriteLine(r);
-                                            }
-                                            else if (variablus[0].ToString().Contains("s"))
-                                            {
-                                                Console.WriteLine(s);
-                                            }
-                                            else if (variablus[0].ToString().Contains("t"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                //Console.WriteLine(variablus[1]);
-                                                var consolear = t[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("u"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                var consolear = u[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("v"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                var consolear = v[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("w"))
-                                            {
-                                                Console.WriteLine(w);
-                                            }
-                                            else if (variablus[0].ToString().Contains("x"))
-                                            {
-                                                Console.WriteLine(x);
-                                            }
-                                            else if (variablus[0].ToString().Contains("y"))
-                                            {
-                                                Console.WriteLine(y);
-                                            }
-                                            else if (variablus[0].ToString().Contains("z"))
-                                            {
-                                                Console.WriteLine(z);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
+                                            a = txt;
                                         }
-                                        else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                        else if (divicionenaccion[1].ToString().Contains("b"))
                                         {
-                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
-                                            if (File.Exists(divicionenaccion[0].Substring(3)))
-                                            {
-                                                var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
-                                                if (divicionenaccion[1].ToString().Contains("a"))
-                                                {
-                                                    a = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("b"))
-                                                {
-                                                    b = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("c"))
-                                                {
-                                                    c = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("d"))
-                                                {
-                                                    d = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("e"))
-                                                {
-                                                    e = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("f"))
-                                                {
-                                                    f = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("g"))
-                                                {
-                                                    g = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("h"))
-                                                {
-                                                    h = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("i"))
-                                                {
-                                                    i = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("j"))
-                                                {
-                                                    j = txt;
-                                                }
-                                                else
-                                                {
-                                                    throw new Exception();
-                                                };
-                                            }
-                                            else
-                                            {
-                                                //Console.WriteLine(divicionenaccion[0]);
-                                                throw new Exception();
-                                            };
+                                            b = txt;
                                         }
-                                        else if (http.IsMatch(nuevocodigo[controladordenuevo]))
+                                        else if (divicionenaccion[1].ToString().Contains("c"))
                                         {
-                                            var link = nuevocodigo[controladordenuevo].Split('¿')[1];
-                                            var conexion = new HttpClient();
+                                            c = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("d"))
+                                        {
+                                            d = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("e"))
+                                        {
+                                            e = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("f"))
+                                        {
+                                            f = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("g"))
+                                        {
+                                            g = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("h"))
+                                        {
+                                            h = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("i"))
+                                        {
+                                            i = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("j"))
+                                        {
+                                            j = txt;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else
+                                    {
+                                        //Console.WriteLine(divicionenaccion[0]);
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (http.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            HttpResponseMessage pagina;
+                                    HttpResponseMessage pagina;
                                             if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
                                             {
                                                 pagina = await conexion.GetAsync(link);
@@ -18411,7 +19095,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -18421,7 +19105,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -18429,1263 +19113,1318 @@ namespace onlineTroll
                                                 throw new Exception();
                                                 //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
                                             };
-                                            var html = await pagina.Content.ReadAsStringAsync();
-                                            var status1 = pagina.StatusCode.ToString();
-                                            Double status;
-                                            switch (status1)
-                                            {
-                                                case "Accepted":
-                                                    status = 202;
-                                                    break;
-                                                case "Ambiguous":
-                                                    status = 300;
-                                                    break;
-                                                case "BadGateway":
-                                                    status = 502;
-                                                    break;
-                                                case "BadRequest":
-                                                    status = 400;
-                                                    break;
-                                                case "Conflict":
-                                                    status = 409;
-                                                    break;
-                                                case "Continue":
-                                                    status = 100;
-                                                    break;
-                                                case "Created":
-                                                    status = 201;
-                                                    break;
-                                                case "ExpectationFailed":
-                                                    status = 417;
-                                                    break;
-                                                case "Forbidden":
-                                                    status = 403;
-                                                    break;
-                                                case "Found":
-                                                    status = 302;
-                                                    break;
-                                                case "GatewayTimeout":
-                                                    status = 504;
-                                                    break;
-                                                case "Gone":
-                                                    status = 410;
-                                                    break;
-                                                case "HttpVersionNotSupported":
-                                                    status = 505;
-                                                    break;
-                                                case "InternalServerError":
-                                                    status = 500;
-                                                    break;
-                                                case "LengthRequired":
-                                                    status = 411;
-                                                    break;
-                                                case "MethodNotAllowed":
-                                                    status = 405;
-                                                    break;
-                                                case "Moved":
-                                                    status = 301;
-                                                    break;
-                                                case "MovedPermanently":
-                                                    status = 301;
-                                                    break;
-                                                case "MultipleChoices":
-                                                    status = 300;
-                                                    break;
-                                                case "NoContent":
-                                                    status = 204;
-                                                    break;
-                                                case "NonAuthoritativeInformation":
-                                                    status = 203;
-                                                    break;
-                                                case "NotAcceptable":
-                                                    status = 406;
-                                                    break;
-                                                case "NotFound":
-                                                    status = 404;
-                                                    break;
-                                                case "NotImplemented":
-                                                    status = 501;
-                                                    break;
-                                                case "NotModified":
-                                                    status = 304;
-                                                    break;
-                                                case "OK":
-                                                    status = 200;
-                                                    break;
-                                                case "PartialContent":
-                                                    status = 206;
-                                                    break;
-                                                case "PaymentRequired":
-                                                    status = 402;
-                                                    break;
-                                                case "PreconditionFailed":
-                                                    status = 412;
-                                                    break;
-                                                case "ProxyAuthenticationRequired":
-                                                    status = 407;
-                                                    break;
-                                                case "Redirect":
-                                                    status = 302;
-                                                    break;
-                                                case "RedirectKeepVerb":
-                                                    status = 307;
-                                                    break;
-                                                case "RedirectMethod":
-                                                    status = 303;
-                                                    break;
-                                                case "RequestedRangeNotSatisfiable":
-                                                    status = 416;
-                                                    break;
-                                                case "RequestEntityTooLarge":
-                                                    status = 413;
-                                                    break;
-                                                case "RequestTimeout":
-                                                    status = 408;
-                                                    break;
-                                                case "RequestUriTooLong":
-                                                    status = 414;
-                                                    break;
-                                                case "ResetContent":
-                                                    status = 205;
-                                                    break;
-                                                case "SeeOther":
-                                                    status = 303;
-                                                    break;
-                                                case "ServiceUnavailable":
-                                                    status = 503;
-                                                    break;
-                                                case "SwitchingProtocols":
-                                                    status = 101;
-                                                    break;
-                                                case "TemporaryRedirect":
-                                                    status = 307;
-                                                    break;
-                                                case "Unauthorized":
-                                                    status = 401;
-                                                    break;
-                                                case "UnsupportedMediaType":
-                                                    status = 415;
-                                                    break;
-                                                case "Unused":
-                                                    status = 306;
-                                                    break;
-                                                case "UpgradeRequired":
-                                                    status = 426;
-                                                    break;
-                                                case "UseProxy":
-                                                    status = 305;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-                                            var varparaelstatus = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[1];
-                                            var varparalapagina = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[0].Replace("l},º", "");
-                                            switch (varparaelstatus)
-                                            {
-                                                case "k":
-                                                    k = status;
-                                                    break;
-                                                case "l":
-                                                    l = status;
-                                                    break;
-                                                case "m":
-                                                    m = status;
-                                                    break;
-                                                case "n":
-                                                    n = status;
-                                                    break;
-                                                case "ñ":
-                                                    ñ = status;
-                                                    break;
-                                                case "o":
-                                                    o = status;
-                                                    break;
-                                                case "p":
-                                                    p = status;
-                                                    break;
-                                                case "q":
-                                                    q = status;
-                                                    break;
-                                                case "r":
-                                                    r = status;
-                                                    break;
-                                                case "s":
-                                                    s = status;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-                                            switch (varparalapagina)
-                                            {
-                                                case "a":
-                                                    a = html;
-                                                    break;
-                                                case "b":
-                                                    a = html;
-                                                    break;
-                                                case "c":
-                                                    a = html;
-                                                    break;
-                                                case "d":
-                                                    a = html;
-                                                    break;
-                                                case "e":
-                                                    a = html;
-                                                    break;
-                                                case "f":
-                                                    a = html;
-                                                    break;
-                                                case "g":
-                                                    a = html;
-                                                    break;
-                                                case "h":
-                                                    a = html;
-                                                    break;
-                                                case "i":
-                                                    a = html;
-                                                    break;
-                                                case "j":
-                                                    a = html;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-
-                                        }
-                                        else if (cambiarvalor.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-
-
-
-                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
-                                            //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
-
-                                            ///////////////////////////////////////////
-                                            //Console.WriteLine(arrayasignacionif[1].Length);
-                                            var estoesarray = new Regex(".-_-.");
-                                            /*if(arrayasignacionif[1].Length != 2 || arrayasignacionif[1].Length != 1)
-                                            {
-                                                throw new Exception();
-                                            }*/
-                                            if (arrayasignacionif[1][0].ToString().Contains("a"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        a = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    a = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("b"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        b = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    b = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("c"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        c = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    c = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("d"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        d = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    d = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("e"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        e = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    e = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("f"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        f = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    f = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("g"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        g = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    g = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("h"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        h = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    h = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("i"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        i = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    i = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("j"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        j = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    j = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("k")) ///los numeritos
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        k = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    k = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("l"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        l = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    l = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("m"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        m = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    m = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("n"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        n = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    n = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        ñ = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    ñ = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("o"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        o = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    o = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("p"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        p = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    p = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("q"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        q = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    q = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("r"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        r = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    r = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("s"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        s = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    s = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("t"))
-                                            {
-                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                                for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
-                                                {
-                                                    if (jajadivicion[zzz].Contains("NaN"))
-                                                    {
-                                                        throw new Exception();
-                                                    }
-                                                    t[zzz] = Double.Parse(jajadivicion[zzz]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("u"))
-                                            {
-                                                u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("v"))
-                                            {
-                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                                for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
-                                                {
-                                                    v[zzz] = bool.Parse(jajadivicion2[zzz]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("w"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        w = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    w = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("x"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        x = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    x = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("y"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        y = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    y = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("z"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        z = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    z = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            Environment.Exit(69);
-                                        }
-                                        else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
-
-                                            if (varibleabuscar[0].ToString().Contains("k"))
-                                            {
-                                                Thread.Sleep(int.Parse(k.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("l"))
-                                            {
-                                                Thread.Sleep(int.Parse(l.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("m"))
-                                            {
-                                                Thread.Sleep(int.Parse(m.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("n"))
-                                            {
-                                                Thread.Sleep(int.Parse(n.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("ñ"))
-                                            {
-                                                Thread.Sleep(int.Parse(ñ.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("o"))
-                                            {
-                                                Thread.Sleep(int.Parse(o.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("p"))
-                                            {
-                                                Thread.Sleep(int.Parse(p.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("q"))
-                                            {
-                                                Thread.Sleep(int.Parse(q.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("r"))
-                                            {
-                                                Thread.Sleep(int.Parse(r.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("s"))
-                                            {
-                                                Thread.Sleep(int.Parse(s.ToString()));
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
-                                            if (variableainvertir[0].ToString().Contains("w"))
-                                            {
-                                                w = !w;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("x"))
-                                            {
-                                                x = !x;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("y"))
-                                            {
-                                                y = !y;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("z"))
-                                            {
-                                                z = !z;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
-                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
-                                            if (variableaferificar.ToString().Contains("k"))
-                                            {
-                                                k = k - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("l"))
-                                            {
-                                                l = l - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("m"))
-                                            {
-                                                m = m - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("n"))
-                                            {
-                                                n = n - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("ñ"))
-                                            {
-                                                ñ = ñ - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("o"))
-                                            {
-                                                o = o - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("p"))
-                                            {
-                                                p = p - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("q"))
-                                            {
-                                                q = q - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("r"))
-                                            {
-                                                r = r - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("s"))
-                                            {
-                                                s = s - numeroparalamodificacion;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
-                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
-                                            if (variableaferificar.ToString().Contains("k"))
-                                            {
-                                                k = k + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("l"))
-                                            {
-                                                l = l + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("m"))
-                                            {
-                                                m = m + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("n"))
-                                            {
-                                                n = n + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("ñ"))
-                                            {
-                                                ñ = ñ + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("o"))
-                                            {
-                                                o = o + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("p"))
-                                            {
-                                                p = p + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("q"))
-                                            {
-                                                q = q + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("r"))
-                                            {
-                                                r = r + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("s"))
-                                            {
-                                                s = s + numeroparalamodificacion;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
-                                            if (variableparalacomprobacion.ToString().Contains("a"))
-                                            {
-                                                a = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("b"))
-                                            {
-                                                b = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("c"))
-                                            {
-                                                c = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("d"))
-                                            {
-                                                d = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("e"))
-                                            {
-                                                e = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("f"))
-                                            {
-                                                f = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("g"))
-                                            {
-                                                g = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("h"))
-                                            {
-                                                h = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("i"))
-                                            {
-                                                i = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("j"))
-                                            {
-                                                j = Console.ReadLine();
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (remplazar.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var argumentos = nuevocodigo[controladordenuevo].Substring(4).Split('_');
-                                            string texto;
-                                            string remplazo;
-                                            var exp = new Regex(argumentos[1]);
-                                            if (argumentos[0][0].ToString().Contains("a"))
-                                            {
-                                                texto = a;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("b"))
-                                            {
-                                                texto = b;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("c"))
-                                            {
-                                                texto = c;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("d"))
-                                            {
-                                                texto = d;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("e"))
-                                            {
-                                                texto = e;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("f"))
-                                            {
-                                                texto = f;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("g"))
-                                            {
-                                                texto = g;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("h"))
-                                            {
-                                                texto = h;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("i"))
-                                            {
-                                                texto = i;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("j"))
-                                            {
-                                                texto = j;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-
-                                            if (argumentos[2][0].ToString().Contains("a"))
-                                            {
-                                                remplazo = a;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("b"))
-                                            {
-                                                remplazo = b;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("c"))
-                                            {
-                                                remplazo = c;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("d"))
-                                            {
-                                                remplazo = d;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("e"))
-                                            {
-                                                remplazo = e;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("f"))
-                                            {
-                                                remplazo = f;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("g"))
-                                            {
-                                                remplazo = g;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("h"))
-                                            {
-                                                remplazo = h;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("i"))
-                                            {
-                                                remplazo = i;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("j"))
-                                            {
-                                                remplazo = j;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                            var resultado = exp.Replace(texto, remplazo);
-
-                                            if (argumentos[3][0].ToString().Contains("a"))
-                                            {
-                                                a = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("b"))
-                                            {
-                                                b = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("c"))
-                                            {
-                                                c = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("d"))
-                                            {
-                                                d = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("e"))
-                                            {
-                                                e = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("f"))
-                                            {
-                                                f = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("g"))
-                                            {
-                                                g = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("h"))
-                                            {
-                                                h = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("i"))
-                                            {
-                                                i = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("j"))
-                                            {
-                                                j = resultado;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                        }//
-                                        else if (match.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var args = nuevocodigo[controladordenuevo].Substring(4).Split('_');
-                                            var expjaja = new Regex(args[0]);
-                                            bool ismatch;
-
-                                            if (args[1][0].ToString().Contains("a"))
-                                            {
-                                                if (expjaja.IsMatch(a))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("b"))
-                                            {
-                                                if (expjaja.IsMatch(b))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("c"))
-                                            {
-                                                if (expjaja.IsMatch(c))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("d"))
-                                            {
-                                                if (expjaja.IsMatch(d))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("e"))
-                                            {
-                                                if (expjaja.IsMatch(e))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("f"))
-                                            {
-                                                if (expjaja.IsMatch(f))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("g"))
-                                            {
-                                                if (expjaja.IsMatch(g))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("h"))
-                                            {
-                                                if (expjaja.IsMatch(h))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("i"))
-                                            {
-                                                if (expjaja.IsMatch(i))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("j"))
-                                            {
-                                                if (expjaja.IsMatch(j))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                            if (args[2][0].ToString().Contains("w"))
-                                            {
-                                                w = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("x"))
-                                            {
-                                                x = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("y"))
-                                            {
-                                                y = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("z"))
-                                            {
-                                                z = ismatch;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                        }////////////////
-                                        else
-                                        {
+                                    var html = await pagina.Content.ReadAsStringAsync();
+                                    var status1 = pagina.StatusCode.ToString();
+                                    Double status;
+                                    switch (status1)
+                                    {
+                                        case "Accepted":
+                                            status = 202;
+                                            break;
+                                        case "Ambiguous":
+                                            status = 300;
+                                            break;
+                                        case "BadGateway":
+                                            status = 502;
+                                            break;
+                                        case "BadRequest":
+                                            status = 400;
+                                            break;
+                                        case "Conflict":
+                                            status = 409;
+                                            break;
+                                        case "Continue":
+                                            status = 100;
+                                            break;
+                                        case "Created":
+                                            status = 201;
+                                            break;
+                                        case "ExpectationFailed":
+                                            status = 417;
+                                            break;
+                                        case "Forbidden":
+                                            status = 403;
+                                            break;
+                                        case "Found":
+                                            status = 302;
+                                            break;
+                                        case "GatewayTimeout":
+                                            status = 504;
+                                            break;
+                                        case "Gone":
+                                            status = 410;
+                                            break;
+                                        case "HttpVersionNotSupported":
+                                            status = 505;
+                                            break;
+                                        case "InternalServerError":
+                                            status = 500;
+                                            break;
+                                        case "LengthRequired":
+                                            status = 411;
+                                            break;
+                                        case "MethodNotAllowed":
+                                            status = 405;
+                                            break;
+                                        case "Moved":
+                                            status = 301;
+                                            break;
+                                        case "MovedPermanently":
+                                            status = 301;
+                                            break;
+                                        case "MultipleChoices":
+                                            status = 300;
+                                            break;
+                                        case "NoContent":
+                                            status = 204;
+                                            break;
+                                        case "NonAuthoritativeInformation":
+                                            status = 203;
+                                            break;
+                                        case "NotAcceptable":
+                                            status = 406;
+                                            break;
+                                        case "NotFound":
+                                            status = 404;
+                                            break;
+                                        case "NotImplemented":
+                                            status = 501;
+                                            break;
+                                        case "NotModified":
+                                            status = 304;
+                                            break;
+                                        case "OK":
+                                            status = 200;
+                                            break;
+                                        case "PartialContent":
+                                            status = 206;
+                                            break;
+                                        case "PaymentRequired":
+                                            status = 402;
+                                            break;
+                                        case "PreconditionFailed":
+                                            status = 412;
+                                            break;
+                                        case "ProxyAuthenticationRequired":
+                                            status = 407;
+                                            break;
+                                        case "Redirect":
+                                            status = 302;
+                                            break;
+                                        case "RedirectKeepVerb":
+                                            status = 307;
+                                            break;
+                                        case "RedirectMethod":
+                                            status = 303;
+                                            break;
+                                        case "RequestedRangeNotSatisfiable":
+                                            status = 416;
+                                            break;
+                                        case "RequestEntityTooLarge":
+                                            status = 413;
+                                            break;
+                                        case "RequestTimeout":
+                                            status = 408;
+                                            break;
+                                        case "RequestUriTooLong":
+                                            status = 414;
+                                            break;
+                                        case "ResetContent":
+                                            status = 205;
+                                            break;
+                                        case "SeeOther":
+                                            status = 303;
+                                            break;
+                                        case "ServiceUnavailable":
+                                            status = 503;
+                                            break;
+                                        case "SwitchingProtocols":
+                                            status = 101;
+                                            break;
+                                        case "TemporaryRedirect":
+                                            status = 307;
+                                            break;
+                                        case "Unauthorized":
+                                            status = 401;
+                                            break;
+                                        case "UnsupportedMediaType":
+                                            status = 415;
+                                            break;
+                                        case "Unused":
+                                            status = 306;
+                                            break;
+                                        case "UpgradeRequired":
+                                            status = 426;
+                                            break;
+                                        case "UseProxy":
+                                            status = 305;
+                                            break;
+                                        default:
                                             throw new Exception();
-                                        };
+                                            break;
+                                    };
+                                    var varparaelstatus = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[1];
+                                    var varparalapagina = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[0].Replace("l},º", "");
+                                    switch (varparaelstatus)
+                                    {
+                                        case "k":
+                                            k = status;
+                                            break;
+                                        case "l":
+                                            l = status;
+                                            break;
+                                        case "m":
+                                            m = status;
+                                            break;
+                                        case "n":
+                                            n = status;
+                                            break;
+                                        case "ñ":
+                                            ñ = status;
+                                            break;
+                                        case "o":
+                                            o = status;
+                                            break;
+                                        case "p":
+                                            p = status;
+                                            break;
+                                        case "q":
+                                            q = status;
+                                            break;
+                                        case "r":
+                                            r = status;
+                                            break;
+                                        case "s":
+                                            s = status;
+                                            break;
+                                        default:
+                                            throw new Exception();
+                                            break;
+                                    };
+                                    switch (varparalapagina)
+                                    {
+                                        case "a":
+                                            a = html;
+                                            break;
+                                        case "b":
+                                            a = html;
+                                            break;
+                                        case "c":
+                                            a = html;
+                                            break;
+                                        case "d":
+                                            a = html;
+                                            break;
+                                        case "e":
+                                            a = html;
+                                            break;
+                                        case "f":
+                                            a = html;
+                                            break;
+                                        case "g":
+                                            a = html;
+                                            break;
+                                        case "h":
+                                            a = html;
+                                            break;
+                                        case "i":
+                                            a = html;
+                                            break;
+                                        case "j":
+                                            a = html;
+                                            break;
+                                        default:
+                                            throw new Exception();
+                                            break;
                                     };
 
+                                }
+                                else if (cambiarvalor.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+
+
+
+                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
+                                    //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
+
+                                    ///////////////////////////////////////////
+                                    //Console.WriteLine(arrayasignacionif[1].Length);
+                                    var estoesarray = new Regex(".-_-.");
+                                    /*if(arrayasignacionif[1].Length != 2 || arrayasignacionif[1].Length != 1)
+                                    {
+                                        throw new Exception();
+                                    }*/
+                                    if (arrayasignacionif[1][0].ToString().Contains("a"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                a = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            a = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("b"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                b = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            b = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("c"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                c = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            c = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("d"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                d = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            d = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("e"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                e = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            e = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("f"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                f = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            f = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("g"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                g = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            g = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("h"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                h = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            h = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("i"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                i = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            i = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("j"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                j = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            j = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("k")) ///los numeritos
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                k = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            k = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("l"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                l = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            l = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("m"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                m = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            m = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("n"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                n = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            n = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                ñ = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            ñ = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("o"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                o = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            o = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("p"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                p = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            p = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("q"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                q = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            q = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("r"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                r = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            r = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("s"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                s = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            s = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("t"))
+                                    {
+                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                        for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
+                                        {
+                                            if (jajadivicion[zzz].Contains("NaN"))
+                                            {
+                                                throw new Exception();
+                                            }
+                                            t[zzz] = Double.Parse(jajadivicion[zzz]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("u"))
+                                    {
+                                        u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("v"))
+                                    {
+                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                        for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
+                                        {
+                                            v[zzz] = bool.Parse(jajadivicion2[zzz]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("w"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                w = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            w = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("x"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                x = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            x = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("y"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                y = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            y = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("z"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                z = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            z = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    Environment.Exit(69);
+                                }
+                                else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                    if (varibleabuscar[0].ToString().Contains("k"))
+                                    {
+                                        Thread.Sleep(int.Parse(k.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("l"))
+                                    {
+                                        Thread.Sleep(int.Parse(l.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("m"))
+                                    {
+                                        Thread.Sleep(int.Parse(m.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("n"))
+                                    {
+                                        Thread.Sleep(int.Parse(n.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                    {
+                                        Thread.Sleep(int.Parse(ñ.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("o"))
+                                    {
+                                        Thread.Sleep(int.Parse(o.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("p"))
+                                    {
+                                        Thread.Sleep(int.Parse(p.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("q"))
+                                    {
+                                        Thread.Sleep(int.Parse(q.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("r"))
+                                    {
+                                        Thread.Sleep(int.Parse(r.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("s"))
+                                    {
+                                        Thread.Sleep(int.Parse(s.ToString()));
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                    if (variableainvertir[0].ToString().Contains("w"))
+                                    {
+                                        w = !w;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("x"))
+                                    {
+                                        x = !x;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("y"))
+                                    {
+                                        y = !y;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("z"))
+                                    {
+                                        z = !z;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s - numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s + numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                    if (variableparalacomprobacion.ToString().Contains("a"))
+                                    {
+                                        a = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("b"))
+                                    {
+                                        b = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("c"))
+                                    {
+                                        c = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("d"))
+                                    {
+                                        d = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("e"))
+                                    {
+                                        e = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("f"))
+                                    {
+                                        f = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("g"))
+                                    {
+                                        g = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("h"))
+                                    {
+                                        h = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("i"))
+                                    {
+                                        i = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("j"))
+                                    {
+                                        j = Console.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (remplazar.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var argumentos = nuevocodigo[controladordenuevo].Substring(4).Split('_');
+                                    string texto;
+                                    string remplazo;
+                                    var exp = new Regex(argumentos[1]);
+                                    if (argumentos[0][0].ToString().Contains("a"))
+                                    {
+                                        texto = a;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("b"))
+                                    {
+                                        texto = b;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("c"))
+                                    {
+                                        texto = c;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("d"))
+                                    {
+                                        texto = d;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("e"))
+                                    {
+                                        texto = e;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("f"))
+                                    {
+                                        texto = f;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("g"))
+                                    {
+                                        texto = g;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("h"))
+                                    {
+                                        texto = h;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("i"))
+                                    {
+                                        texto = i;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("j"))
+                                    {
+                                        texto = j;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+
+                                    if (argumentos[2][0].ToString().Contains("a"))
+                                    {
+                                        remplazo = a;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("b"))
+                                    {
+                                        remplazo = b;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("c"))
+                                    {
+                                        remplazo = c;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("d"))
+                                    {
+                                        remplazo = d;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("e"))
+                                    {
+                                        remplazo = e;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("f"))
+                                    {
+                                        remplazo = f;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("g"))
+                                    {
+                                        remplazo = g;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("h"))
+                                    {
+                                        remplazo = h;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("i"))
+                                    {
+                                        remplazo = i;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("j"))
+                                    {
+                                        remplazo = j;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                    var resultado = exp.Replace(texto, remplazo);
+
+                                    if (argumentos[3][0].ToString().Contains("a"))
+                                    {
+                                        a = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("b"))
+                                    {
+                                        b = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("c"))
+                                    {
+                                        c = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("d"))
+                                    {
+                                        d = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("e"))
+                                    {
+                                        e = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("f"))
+                                    {
+                                        f = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("g"))
+                                    {
+                                        g = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("h"))
+                                    {
+                                        h = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("i"))
+                                    {
+                                        i = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("j"))
+                                    {
+                                        j = resultado;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                }//
+                                else if (match.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var args = nuevocodigo[controladordenuevo].Substring(4).Split('_');
+                                    var expjaja = new Regex(args[0]);
+                                    bool ismatch;
+
+                                    if (args[1][0].ToString().Contains("a"))
+                                    {
+                                        if (expjaja.IsMatch(a))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("b"))
+                                    {
+                                        if (expjaja.IsMatch(b))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("c"))
+                                    {
+                                        if (expjaja.IsMatch(c))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("d"))
+                                    {
+                                        if (expjaja.IsMatch(d))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("e"))
+                                    {
+                                        if (expjaja.IsMatch(e))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("f"))
+                                    {
+                                        if (expjaja.IsMatch(f))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("g"))
+                                    {
+                                        if (expjaja.IsMatch(g))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("h"))
+                                    {
+                                        if (expjaja.IsMatch(h))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("i"))
+                                    {
+                                        if (expjaja.IsMatch(i))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("j"))
+                                    {
+                                        if (expjaja.IsMatch(j))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                    if (args[2][0].ToString().Contains("w"))
+                                    {
+                                        w = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("x"))
+                                    {
+                                        x = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("y"))
+                                    {
+                                        y = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("z"))
+                                    {
+                                        z = ismatch;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                }////////////////
+                                else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                    {
+                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                        if (File.Exists(arrayedit[0]))
+                        {
+                            if (arrayedit[1][0].ToString().Contains("a"))
+                            {
+                                File.WriteAllText(arrayedit[0], a);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("b"))
+                            {
+                                File.WriteAllText(arrayedit[0], b);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("c"))
+                            {
+                                File.WriteAllText(arrayedit[0], c);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("d"))
+                            {
+                                File.WriteAllText(arrayedit[0], d);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("e"))
+                            {
+                                File.WriteAllText(arrayedit[0], e);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("f"))
+                            {
+                                File.WriteAllText(arrayedit[0], f);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("g"))
+                            {
+                                File.WriteAllText(arrayedit[0], g);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("h"))
+                            {
+                                File.WriteAllText(arrayedit[0], h);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("i"))
+                            {
+                                File.WriteAllText(arrayedit[0], i);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("j"))
+                            {
+                                File.WriteAllText(arrayedit[0], j);
+                            }
+                            else
+                            {
+                                throw new Exception();
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                                else
+                                {
+                                    throw new Exception();
+                                };
+                            };
+                        
                                 };
                             }
                             else if (buno == false)
@@ -19693,196 +20432,196 @@ namespace onlineTroll
                                 if (bdos == false)
                                 {
                                     var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
-                                    for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
+                            for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
+                            {
+                                if (consola.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variablus = nuevocodigo[controladordenuevo].Replace("↓ùp👌", "");
+                                    //Console.WriteLine(variablus.Length);
+                                    if (variablus[0].ToString().Contains("a"))
                                     {
-                                        if (consola.IsMatch(nuevocodigo[controladordenuevo]))
+                                        Console.WriteLine(a);
+                                    }
+                                    else if (variablus[0].ToString().Contains("b"))
+                                    {
+                                        Console.WriteLine(b);
+                                    }
+                                    else if (variablus[0].ToString().Contains("c"))
+                                    {
+                                        Console.WriteLine(c);
+                                    }
+                                    else if (variablus[0].ToString().Contains("d"))
+                                    {
+                                        Console.WriteLine(d);
+                                    }
+                                    else if (variablus[0].ToString().Contains("e"))
+                                    {
+                                        Console.WriteLine(e);
+                                    }
+                                    else if (variablus[0].ToString().Contains("f"))
+                                    {
+                                        Console.WriteLine(f);
+                                    }
+                                    else if (variablus[0].ToString().Contains("g"))
+                                    {
+                                        Console.WriteLine(g);
+                                    }
+                                    else if (variablus[0].ToString().Contains("h"))
+                                    {
+                                        Console.WriteLine(h);
+                                    }
+                                    else if (variablus[0].ToString().Contains("i"))
+                                    {
+                                        Console.WriteLine(i);
+                                    }
+                                    else if (variablus[0].ToString().Contains("j"))
+                                    {
+                                        Console.WriteLine(j);
+                                    }
+                                    else if (variablus[0].ToString().Contains("k"))
+                                    {
+                                        Console.WriteLine(k);
+                                    }
+                                    else if (variablus[0].ToString().Contains("l"))
+                                    {
+                                        Console.WriteLine(l);
+                                    }
+                                    else if (variablus[0].ToString().Contains("m"))
+                                    {
+                                        Console.WriteLine(m);
+                                    }
+                                    else if (variablus[0].ToString().Contains("n"))
+                                    {
+                                        Console.WriteLine(n);
+                                    }
+                                    else if (variablus[0].ToString().Contains("ñ"))
+                                    {
+                                        Console.WriteLine(ñ);
+                                    }
+                                    else if (variablus[0].ToString().Contains("o"))
+                                    {
+                                        Console.WriteLine(o);
+                                    }
+                                    else if (variablus[0].ToString().Contains("p"))
+                                    {
+                                        Console.WriteLine(p);
+                                    }
+                                    else if (variablus[0].ToString().Contains("q"))
+                                    {
+                                        Console.WriteLine(q);
+                                    }
+                                    else if (variablus[0].ToString().Contains("r"))
+                                    {
+                                        Console.WriteLine(r);
+                                    }
+                                    else if (variablus[0].ToString().Contains("s"))
+                                    {
+                                        Console.WriteLine(s);
+                                    }
+                                    else if (variablus[0].ToString().Contains("t"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        //Console.WriteLine(variablus[1]);
+                                        var consolear = t[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("u"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        var consolear = u[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("v"))
+                                    {
+                                        var numero = variablus.Replace("-_-", "�").Split('�');
+                                        var consolear = v[int.Parse(numero[1].ToString())];
+                                        Console.WriteLine(consolear);
+                                    }
+                                    else if (variablus[0].ToString().Contains("w"))
+                                    {
+                                        Console.WriteLine(w);
+                                    }
+                                    else if (variablus[0].ToString().Contains("x"))
+                                    {
+                                        Console.WriteLine(x);
+                                    }
+                                    else if (variablus[0].ToString().Contains("y"))
+                                    {
+                                        Console.WriteLine(y);
+                                    }
+                                    else if (variablus[0].ToString().Contains("z"))
+                                    {
+                                        Console.WriteLine(z);
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
+                                    if (File.Exists(divicionenaccion[0].Substring(3)))
+                                    {
+                                        var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
+                                        if (divicionenaccion[1].ToString().Contains("a"))
                                         {
-                                            var variablus = nuevocodigo[controladordenuevo].Replace("↓ùp👌", "");
-                                            //Console.WriteLine(variablus.Length);
-                                            if (variablus[0].ToString().Contains("a"))
-                                            {
-                                                Console.WriteLine(a);
-                                            }
-                                            else if (variablus[0].ToString().Contains("b"))
-                                            {
-                                                Console.WriteLine(b);
-                                            }
-                                            else if (variablus[0].ToString().Contains("c"))
-                                            {
-                                                Console.WriteLine(c);
-                                            }
-                                            else if (variablus[0].ToString().Contains("d"))
-                                            {
-                                                Console.WriteLine(d);
-                                            }
-                                            else if (variablus[0].ToString().Contains("e"))
-                                            {
-                                                Console.WriteLine(e);
-                                            }
-                                            else if (variablus[0].ToString().Contains("f"))
-                                            {
-                                                Console.WriteLine(f);
-                                            }
-                                            else if (variablus[0].ToString().Contains("g"))
-                                            {
-                                                Console.WriteLine(g);
-                                            }
-                                            else if (variablus[0].ToString().Contains("h"))
-                                            {
-                                                Console.WriteLine(h);
-                                            }
-                                            else if (variablus[0].ToString().Contains("i"))
-                                            {
-                                                Console.WriteLine(i);
-                                            }
-                                            else if (variablus[0].ToString().Contains("j"))
-                                            {
-                                                Console.WriteLine(j);
-                                            }
-                                            else if (variablus[0].ToString().Contains("k"))
-                                            {
-                                                Console.WriteLine(k);
-                                            }
-                                            else if (variablus[0].ToString().Contains("l"))
-                                            {
-                                                Console.WriteLine(l);
-                                            }
-                                            else if (variablus[0].ToString().Contains("m"))
-                                            {
-                                                Console.WriteLine(m);
-                                            }
-                                            else if (variablus[0].ToString().Contains("n"))
-                                            {
-                                                Console.WriteLine(n);
-                                            }
-                                            else if (variablus[0].ToString().Contains("ñ"))
-                                            {
-                                                Console.WriteLine(ñ);
-                                            }
-                                            else if (variablus[0].ToString().Contains("o"))
-                                            {
-                                                Console.WriteLine(o);
-                                            }
-                                            else if (variablus[0].ToString().Contains("p"))
-                                            {
-                                                Console.WriteLine(p);
-                                            }
-                                            else if (variablus[0].ToString().Contains("q"))
-                                            {
-                                                Console.WriteLine(q);
-                                            }
-                                            else if (variablus[0].ToString().Contains("r"))
-                                            {
-                                                Console.WriteLine(r);
-                                            }
-                                            else if (variablus[0].ToString().Contains("s"))
-                                            {
-                                                Console.WriteLine(s);
-                                            }
-                                            else if (variablus[0].ToString().Contains("t"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                //Console.WriteLine(variablus[1]);
-                                                var consolear = t[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("u"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                var consolear = u[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("v"))
-                                            {
-                                                var numero = variablus.Replace("-_-", "�").Split('�');
-                                                var consolear = v[int.Parse(numero[1].ToString())];
-                                                Console.WriteLine(consolear);
-                                            }
-                                            else if (variablus[0].ToString().Contains("w"))
-                                            {
-                                                Console.WriteLine(w);
-                                            }
-                                            else if (variablus[0].ToString().Contains("x"))
-                                            {
-                                                Console.WriteLine(x);
-                                            }
-                                            else if (variablus[0].ToString().Contains("y"))
-                                            {
-                                                Console.WriteLine(y);
-                                            }
-                                            else if (variablus[0].ToString().Contains("z"))
-                                            {
-                                                Console.WriteLine(z);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
+                                            a = txt;
                                         }
-                                        else if (archivus.IsMatch(nuevocodigo[controladordenuevo]))
+                                        else if (divicionenaccion[1].ToString().Contains("b"))
                                         {
-                                            var divicionenaccion = nuevocodigo[controladordenuevo].Replace("csis", "�").Split('�');
-                                            if (File.Exists(divicionenaccion[0].Substring(3)))
-                                            {
-                                                var txt = File.ReadAllText(divicionenaccion[0].Substring(3));
-                                                if (divicionenaccion[1].ToString().Contains("a"))
-                                                {
-                                                    a = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("b"))
-                                                {
-                                                    b = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("c"))
-                                                {
-                                                    c = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("d"))
-                                                {
-                                                    d = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("e"))
-                                                {
-                                                    e = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("f"))
-                                                {
-                                                    f = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("g"))
-                                                {
-                                                    g = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("h"))
-                                                {
-                                                    h = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("i"))
-                                                {
-                                                    i = txt;
-                                                }
-                                                else if (divicionenaccion[1].ToString().Contains("j"))
-                                                {
-                                                    j = txt;
-                                                }
-                                                else
-                                                {
-                                                    throw new Exception();
-                                                };
-                                            }
-                                            else
-                                            {
-                                                //Console.WriteLine(divicionenaccion[0]);
-                                                throw new Exception();
-                                            };
+                                            b = txt;
                                         }
-                                        else if (http.IsMatch(nuevocodigo[controladordenuevo]))
+                                        else if (divicionenaccion[1].ToString().Contains("c"))
                                         {
-                                            var link = nuevocodigo[controladordenuevo].Split('¿')[1];
-                                            var conexion = new HttpClient();
-                                            conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                            c = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("d"))
+                                        {
+                                            d = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("e"))
+                                        {
+                                            e = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("f"))
+                                        {
+                                            f = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("g"))
+                                        {
+                                            g = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("h"))
+                                        {
+                                            h = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("i"))
+                                        {
+                                            i = txt;
+                                        }
+                                        else if (divicionenaccion[1].ToString().Contains("j"))
+                                        {
+                                            j = txt;
+                                        }
+                                        else
+                                        {
+                                            throw new Exception();
+                                        };
+                                    }
+                                    else
+                                    {
+                                        //Console.WriteLine(divicionenaccion[0]);
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (http.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    var conexion = new HttpClient();
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            HttpResponseMessage pagina;
+                                    HttpResponseMessage pagina;
                                             if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
                                             {
                                                 pagina = await conexion.GetAsync(link);
@@ -19898,7 +20637,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -19908,7 +20647,7 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -19916,1263 +20655,1318 @@ namespace onlineTroll
                                                 throw new Exception();
                                                 //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
                                             };
-                                            var html = await pagina.Content.ReadAsStringAsync();
-                                            var status1 = pagina.StatusCode.ToString();
-                                            Double status;
-                                            switch (status1)
-                                            {
-                                                case "Accepted":
-                                                    status = 202;
-                                                    break;
-                                                case "Ambiguous":
-                                                    status = 300;
-                                                    break;
-                                                case "BadGateway":
-                                                    status = 502;
-                                                    break;
-                                                case "BadRequest":
-                                                    status = 400;
-                                                    break;
-                                                case "Conflict":
-                                                    status = 409;
-                                                    break;
-                                                case "Continue":
-                                                    status = 100;
-                                                    break;
-                                                case "Created":
-                                                    status = 201;
-                                                    break;
-                                                case "ExpectationFailed":
-                                                    status = 417;
-                                                    break;
-                                                case "Forbidden":
-                                                    status = 403;
-                                                    break;
-                                                case "Found":
-                                                    status = 302;
-                                                    break;
-                                                case "GatewayTimeout":
-                                                    status = 504;
-                                                    break;
-                                                case "Gone":
-                                                    status = 410;
-                                                    break;
-                                                case "HttpVersionNotSupported":
-                                                    status = 505;
-                                                    break;
-                                                case "InternalServerError":
-                                                    status = 500;
-                                                    break;
-                                                case "LengthRequired":
-                                                    status = 411;
-                                                    break;
-                                                case "MethodNotAllowed":
-                                                    status = 405;
-                                                    break;
-                                                case "Moved":
-                                                    status = 301;
-                                                    break;
-                                                case "MovedPermanently":
-                                                    status = 301;
-                                                    break;
-                                                case "MultipleChoices":
-                                                    status = 300;
-                                                    break;
-                                                case "NoContent":
-                                                    status = 204;
-                                                    break;
-                                                case "NonAuthoritativeInformation":
-                                                    status = 203;
-                                                    break;
-                                                case "NotAcceptable":
-                                                    status = 406;
-                                                    break;
-                                                case "NotFound":
-                                                    status = 404;
-                                                    break;
-                                                case "NotImplemented":
-                                                    status = 501;
-                                                    break;
-                                                case "NotModified":
-                                                    status = 304;
-                                                    break;
-                                                case "OK":
-                                                    status = 200;
-                                                    break;
-                                                case "PartialContent":
-                                                    status = 206;
-                                                    break;
-                                                case "PaymentRequired":
-                                                    status = 402;
-                                                    break;
-                                                case "PreconditionFailed":
-                                                    status = 412;
-                                                    break;
-                                                case "ProxyAuthenticationRequired":
-                                                    status = 407;
-                                                    break;
-                                                case "Redirect":
-                                                    status = 302;
-                                                    break;
-                                                case "RedirectKeepVerb":
-                                                    status = 307;
-                                                    break;
-                                                case "RedirectMethod":
-                                                    status = 303;
-                                                    break;
-                                                case "RequestedRangeNotSatisfiable":
-                                                    status = 416;
-                                                    break;
-                                                case "RequestEntityTooLarge":
-                                                    status = 413;
-                                                    break;
-                                                case "RequestTimeout":
-                                                    status = 408;
-                                                    break;
-                                                case "RequestUriTooLong":
-                                                    status = 414;
-                                                    break;
-                                                case "ResetContent":
-                                                    status = 205;
-                                                    break;
-                                                case "SeeOther":
-                                                    status = 303;
-                                                    break;
-                                                case "ServiceUnavailable":
-                                                    status = 503;
-                                                    break;
-                                                case "SwitchingProtocols":
-                                                    status = 101;
-                                                    break;
-                                                case "TemporaryRedirect":
-                                                    status = 307;
-                                                    break;
-                                                case "Unauthorized":
-                                                    status = 401;
-                                                    break;
-                                                case "UnsupportedMediaType":
-                                                    status = 415;
-                                                    break;
-                                                case "Unused":
-                                                    status = 306;
-                                                    break;
-                                                case "UpgradeRequired":
-                                                    status = 426;
-                                                    break;
-                                                case "UseProxy":
-                                                    status = 305;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-                                            var varparaelstatus = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[1];
-                                            var varparalapagina = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[0].Replace("l},º", "");
-                                            switch (varparaelstatus)
-                                            {
-                                                case "k":
-                                                    k = status;
-                                                    break;
-                                                case "l":
-                                                    l = status;
-                                                    break;
-                                                case "m":
-                                                    m = status;
-                                                    break;
-                                                case "n":
-                                                    n = status;
-                                                    break;
-                                                case "ñ":
-                                                    ñ = status;
-                                                    break;
-                                                case "o":
-                                                    o = status;
-                                                    break;
-                                                case "p":
-                                                    p = status;
-                                                    break;
-                                                case "q":
-                                                    q = status;
-                                                    break;
-                                                case "r":
-                                                    r = status;
-                                                    break;
-                                                case "s":
-                                                    s = status;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-                                            switch (varparalapagina)
-                                            {
-                                                case "a":
-                                                    a = html;
-                                                    break;
-                                                case "b":
-                                                    a = html;
-                                                    break;
-                                                case "c":
-                                                    a = html;
-                                                    break;
-                                                case "d":
-                                                    a = html;
-                                                    break;
-                                                case "e":
-                                                    a = html;
-                                                    break;
-                                                case "f":
-                                                    a = html;
-                                                    break;
-                                                case "g":
-                                                    a = html;
-                                                    break;
-                                                case "h":
-                                                    a = html;
-                                                    break;
-                                                case "i":
-                                                    a = html;
-                                                    break;
-                                                case "j":
-                                                    a = html;
-                                                    break;
-                                                default:
-                                                    throw new Exception();
-                                                    break;
-                                            };
-
-                                        }
-                                        else if (cambiarvalor.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-
-
-
-                                            string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
-                                            //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
-
-                                            ///////////////////////////////////////////
-                                            //Console.WriteLine(arrayasignacionif[1].Length);
-                                            var estoesarray = new Regex(".-_-.");
-                                            /*if(arrayasignacionif[1].Length != 2 || arrayasignacionif[1].Length != 1)
-                                            {
-                                                throw new Exception();
-                                            }*/
-                                            if (arrayasignacionif[1][0].ToString().Contains("a"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        a = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    a = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("b"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        b = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    b = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("c"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        c = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    c = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("d"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        d = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    d = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("e"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        e = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    e = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("f"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        f = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    f = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("g"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        g = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    g = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("h"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        h = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    h = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("i"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        i = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    i = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("j"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("u"))
-                                                    {
-                                                        j = u[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    j = arrayasignacionif[0];
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("k")) ///los numeritos
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        k = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    k = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("l"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        l = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    l = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("m"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        m = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    m = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("n"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        n = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    n = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        ñ = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    ñ = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("o"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        o = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    o = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("p"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        p = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    p = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("q"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        q = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    q = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("r"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        r = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    r = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("s"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("t"))
-                                                    {
-                                                        s = t[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    s = Double.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("t"))
-                                            {
-                                                var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                                for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
-                                                {
-                                                    if (jajadivicion[zzz].Contains("NaN"))
-                                                    {
-                                                        throw new Exception();
-                                                    }
-                                                    t[zzz] = Double.Parse(jajadivicion[zzz]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("u"))
-                                            {
-                                                u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("v"))
-                                            {
-                                                var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
-                                                for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
-                                                {
-                                                    v[zzz] = bool.Parse(jajadivicion2[zzz]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("w"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        w = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    w = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("x"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        x = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    x = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("y"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        y = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    y = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else if (arrayasignacionif[1][0].ToString().Contains("z"))
-                                            {
-                                                if (estoesarray.IsMatch(arrayasignacionif[0]))
-                                                {
-                                                    var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
-                                                    if (divicionSuprema[0][0].ToString().Contains("v"))
-                                                    {
-                                                        z = v[int.Parse(divicionSuprema[1])];
-                                                    }
-                                                    else
-                                                    {
-                                                        throw new Exception();
-                                                    };
-                                                }
-                                                else
-                                                {
-                                                    //if (arrayasignacionif[0] == "NaN") throw new Exception();
-                                                    z = bool.Parse(arrayasignacionif[0]);
-                                                };
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            Environment.Exit(69);
-                                        }
-                                        else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
-
-                                            if (varibleabuscar[0].ToString().Contains("k"))
-                                            {
-                                                Thread.Sleep(int.Parse(k.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("l"))
-                                            {
-                                                Thread.Sleep(int.Parse(l.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("m"))
-                                            {
-                                                Thread.Sleep(int.Parse(m.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("n"))
-                                            {
-                                                Thread.Sleep(int.Parse(n.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("ñ"))
-                                            {
-                                                Thread.Sleep(int.Parse(ñ.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("o"))
-                                            {
-                                                Thread.Sleep(int.Parse(o.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("p"))
-                                            {
-                                                Thread.Sleep(int.Parse(p.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("q"))
-                                            {
-                                                Thread.Sleep(int.Parse(q.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("r"))
-                                            {
-                                                Thread.Sleep(int.Parse(r.ToString()));
-                                            }
-                                            else if (varibleabuscar[0].ToString().Contains("s"))
-                                            {
-                                                Thread.Sleep(int.Parse(s.ToString()));
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
-                                            if (variableainvertir[0].ToString().Contains("w"))
-                                            {
-                                                w = !w;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("x"))
-                                            {
-                                                x = !x;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("y"))
-                                            {
-                                                y = !y;
-                                            }
-                                            else if (variableainvertir[0].ToString().Contains("z"))
-                                            {
-                                                z = !z;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
-                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
-                                            if (variableaferificar.ToString().Contains("k"))
-                                            {
-                                                k = k - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("l"))
-                                            {
-                                                l = l - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("m"))
-                                            {
-                                                m = m - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("n"))
-                                            {
-                                                n = n - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("ñ"))
-                                            {
-                                                ñ = ñ - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("o"))
-                                            {
-                                                o = o - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("p"))
-                                            {
-                                                p = p - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("q"))
-                                            {
-                                                q = q - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("r"))
-                                            {
-                                                r = r - numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("s"))
-                                            {
-                                                s = s - numeroparalamodificacion;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableaferificar = nuevocodigo[controladordenuevo][0];
-                                            var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
-                                            if (variableaferificar.ToString().Contains("k"))
-                                            {
-                                                k = k + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("l"))
-                                            {
-                                                l = l + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("m"))
-                                            {
-                                                m = m + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("n"))
-                                            {
-                                                n = n + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("ñ"))
-                                            {
-                                                ñ = ñ + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("o"))
-                                            {
-                                                o = o + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("p"))
-                                            {
-                                                p = p + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("q"))
-                                            {
-                                                q = q + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("r"))
-                                            {
-                                                r = r + numeroparalamodificacion;
-                                            }
-                                            else if (variableaferificar.ToString().Contains("s"))
-                                            {
-                                                s = s + numeroparalamodificacion;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
-                                            if (variableparalacomprobacion.ToString().Contains("a"))
-                                            {
-                                                a = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("b"))
-                                            {
-                                                b = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("c"))
-                                            {
-                                                c = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("d"))
-                                            {
-                                                d = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("e"))
-                                            {
-                                                e = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("f"))
-                                            {
-                                                f = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("g"))
-                                            {
-                                                g = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("h"))
-                                            {
-                                                h = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("i"))
-                                            {
-                                                i = Console.ReadLine();
-                                            }
-                                            else if (variableparalacomprobacion.ToString().Contains("j"))
-                                            {
-                                                j = Console.ReadLine();
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-                                        }
-                                        else if (remplazar.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var argumentos = nuevocodigo[controladordenuevo].Substring(4).Split('_');
-                                            string texto;
-                                            string remplazo;
-                                            var exp = new Regex(argumentos[1]);
-                                            if (argumentos[0][0].ToString().Contains("a"))
-                                            {
-                                                texto = a;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("b"))
-                                            {
-                                                texto = b;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("c"))
-                                            {
-                                                texto = c;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("d"))
-                                            {
-                                                texto = d;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("e"))
-                                            {
-                                                texto = e;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("f"))
-                                            {
-                                                texto = f;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("g"))
-                                            {
-                                                texto = g;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("h"))
-                                            {
-                                                texto = h;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("i"))
-                                            {
-                                                texto = i;
-                                            }
-                                            else if (argumentos[0][0].ToString().Contains("j"))
-                                            {
-                                                texto = j;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-
-                                            if (argumentos[2][0].ToString().Contains("a"))
-                                            {
-                                                remplazo = a;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("b"))
-                                            {
-                                                remplazo = b;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("c"))
-                                            {
-                                                remplazo = c;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("d"))
-                                            {
-                                                remplazo = d;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("e"))
-                                            {
-                                                remplazo = e;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("f"))
-                                            {
-                                                remplazo = f;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("g"))
-                                            {
-                                                remplazo = g;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("h"))
-                                            {
-                                                remplazo = h;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("i"))
-                                            {
-                                                remplazo = i;
-                                            }
-                                            else if (argumentos[2][0].ToString().Contains("j"))
-                                            {
-                                                remplazo = j;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                            var resultado = exp.Replace(texto, remplazo);
-
-                                            if (argumentos[3][0].ToString().Contains("a"))
-                                            {
-                                                a = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("b"))
-                                            {
-                                                b = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("c"))
-                                            {
-                                                c = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("d"))
-                                            {
-                                                d = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("e"))
-                                            {
-                                                e = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("f"))
-                                            {
-                                                f = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("g"))
-                                            {
-                                                g = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("h"))
-                                            {
-                                                h = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("i"))
-                                            {
-                                                i = resultado;
-                                            }
-                                            else if (argumentos[3][0].ToString().Contains("j"))
-                                            {
-                                                j = resultado;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                        }//
-                                        else if (match.IsMatch(nuevocodigo[controladordenuevo]))
-                                        {
-                                            var args = nuevocodigo[controladordenuevo].Substring(4).Split('_');
-                                            var expjaja = new Regex(args[0]);
-                                            bool ismatch;
-
-                                            if (args[1][0].ToString().Contains("a"))
-                                            {
-                                                if (expjaja.IsMatch(a))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("b"))
-                                            {
-                                                if (expjaja.IsMatch(b))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("c"))
-                                            {
-                                                if (expjaja.IsMatch(c))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("d"))
-                                            {
-                                                if (expjaja.IsMatch(d))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("e"))
-                                            {
-                                                if (expjaja.IsMatch(e))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("f"))
-                                            {
-                                                if (expjaja.IsMatch(f))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("g"))
-                                            {
-                                                if (expjaja.IsMatch(g))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("h"))
-                                            {
-                                                if (expjaja.IsMatch(h))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("i"))
-                                            {
-                                                if (expjaja.IsMatch(i))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else if (args[1][0].ToString().Contains("j"))
-                                            {
-                                                if (expjaja.IsMatch(j))
-                                                {
-                                                    ismatch = true;
-                                                }
-                                                else
-                                                {
-                                                    ismatch = false;
-                                                };
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                            if (args[2][0].ToString().Contains("w"))
-                                            {
-                                                w = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("x"))
-                                            {
-                                                x = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("y"))
-                                            {
-                                                y = ismatch;
-                                            }
-                                            else if (args[2][0].ToString().Contains("z"))
-                                            {
-                                                z = ismatch;
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                            };
-
-                                        }////////////////
-                                        else
-                                        {
+                                    var html = await pagina.Content.ReadAsStringAsync();
+                                    var status1 = pagina.StatusCode.ToString();
+                                    Double status;
+                                    switch (status1)
+                                    {
+                                        case "Accepted":
+                                            status = 202;
+                                            break;
+                                        case "Ambiguous":
+                                            status = 300;
+                                            break;
+                                        case "BadGateway":
+                                            status = 502;
+                                            break;
+                                        case "BadRequest":
+                                            status = 400;
+                                            break;
+                                        case "Conflict":
+                                            status = 409;
+                                            break;
+                                        case "Continue":
+                                            status = 100;
+                                            break;
+                                        case "Created":
+                                            status = 201;
+                                            break;
+                                        case "ExpectationFailed":
+                                            status = 417;
+                                            break;
+                                        case "Forbidden":
+                                            status = 403;
+                                            break;
+                                        case "Found":
+                                            status = 302;
+                                            break;
+                                        case "GatewayTimeout":
+                                            status = 504;
+                                            break;
+                                        case "Gone":
+                                            status = 410;
+                                            break;
+                                        case "HttpVersionNotSupported":
+                                            status = 505;
+                                            break;
+                                        case "InternalServerError":
+                                            status = 500;
+                                            break;
+                                        case "LengthRequired":
+                                            status = 411;
+                                            break;
+                                        case "MethodNotAllowed":
+                                            status = 405;
+                                            break;
+                                        case "Moved":
+                                            status = 301;
+                                            break;
+                                        case "MovedPermanently":
+                                            status = 301;
+                                            break;
+                                        case "MultipleChoices":
+                                            status = 300;
+                                            break;
+                                        case "NoContent":
+                                            status = 204;
+                                            break;
+                                        case "NonAuthoritativeInformation":
+                                            status = 203;
+                                            break;
+                                        case "NotAcceptable":
+                                            status = 406;
+                                            break;
+                                        case "NotFound":
+                                            status = 404;
+                                            break;
+                                        case "NotImplemented":
+                                            status = 501;
+                                            break;
+                                        case "NotModified":
+                                            status = 304;
+                                            break;
+                                        case "OK":
+                                            status = 200;
+                                            break;
+                                        case "PartialContent":
+                                            status = 206;
+                                            break;
+                                        case "PaymentRequired":
+                                            status = 402;
+                                            break;
+                                        case "PreconditionFailed":
+                                            status = 412;
+                                            break;
+                                        case "ProxyAuthenticationRequired":
+                                            status = 407;
+                                            break;
+                                        case "Redirect":
+                                            status = 302;
+                                            break;
+                                        case "RedirectKeepVerb":
+                                            status = 307;
+                                            break;
+                                        case "RedirectMethod":
+                                            status = 303;
+                                            break;
+                                        case "RequestedRangeNotSatisfiable":
+                                            status = 416;
+                                            break;
+                                        case "RequestEntityTooLarge":
+                                            status = 413;
+                                            break;
+                                        case "RequestTimeout":
+                                            status = 408;
+                                            break;
+                                        case "RequestUriTooLong":
+                                            status = 414;
+                                            break;
+                                        case "ResetContent":
+                                            status = 205;
+                                            break;
+                                        case "SeeOther":
+                                            status = 303;
+                                            break;
+                                        case "ServiceUnavailable":
+                                            status = 503;
+                                            break;
+                                        case "SwitchingProtocols":
+                                            status = 101;
+                                            break;
+                                        case "TemporaryRedirect":
+                                            status = 307;
+                                            break;
+                                        case "Unauthorized":
+                                            status = 401;
+                                            break;
+                                        case "UnsupportedMediaType":
+                                            status = 415;
+                                            break;
+                                        case "Unused":
+                                            status = 306;
+                                            break;
+                                        case "UpgradeRequired":
+                                            status = 426;
+                                            break;
+                                        case "UseProxy":
+                                            status = 305;
+                                            break;
+                                        default:
                                             throw new Exception();
-                                        };
+                                            break;
+                                    };
+                                    var varparaelstatus = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[1];
+                                    var varparalapagina = nuevocodigo[controladordenuevo].Split('¿')[0].Split('<')[0].Replace("l},º", "");
+                                    switch (varparaelstatus)
+                                    {
+                                        case "k":
+                                            k = status;
+                                            break;
+                                        case "l":
+                                            l = status;
+                                            break;
+                                        case "m":
+                                            m = status;
+                                            break;
+                                        case "n":
+                                            n = status;
+                                            break;
+                                        case "ñ":
+                                            ñ = status;
+                                            break;
+                                        case "o":
+                                            o = status;
+                                            break;
+                                        case "p":
+                                            p = status;
+                                            break;
+                                        case "q":
+                                            q = status;
+                                            break;
+                                        case "r":
+                                            r = status;
+                                            break;
+                                        case "s":
+                                            s = status;
+                                            break;
+                                        default:
+                                            throw new Exception();
+                                            break;
+                                    };
+                                    switch (varparalapagina)
+                                    {
+                                        case "a":
+                                            a = html;
+                                            break;
+                                        case "b":
+                                            a = html;
+                                            break;
+                                        case "c":
+                                            a = html;
+                                            break;
+                                        case "d":
+                                            a = html;
+                                            break;
+                                        case "e":
+                                            a = html;
+                                            break;
+                                        case "f":
+                                            a = html;
+                                            break;
+                                        case "g":
+                                            a = html;
+                                            break;
+                                        case "h":
+                                            a = html;
+                                            break;
+                                        case "i":
+                                            a = html;
+                                            break;
+                                        case "j":
+                                            a = html;
+                                            break;
+                                        default:
+                                            throw new Exception();
+                                            break;
                                     };
 
+                                }
+                                else if (cambiarvalor.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+
+
+
+                                    string[] arrayasignacionif = nuevocodigo[controladordenuevo].Replace("¨ç]", "�").Split('�');
+                                    //File.WriteAllText("C:\\Users\\Leandro-Arce\\ESCRITORIO\\lol.txt", arrayasignacionif[1]);
+
+                                    ///////////////////////////////////////////
+                                    //Console.WriteLine(arrayasignacionif[1].Length);
+                                    var estoesarray = new Regex(".-_-.");
+                                    /*if(arrayasignacionif[1].Length != 2 || arrayasignacionif[1].Length != 1)
+                                    {
+                                        throw new Exception();
+                                    }*/
+                                    if (arrayasignacionif[1][0].ToString().Contains("a"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                a = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            a = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("b"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                b = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            b = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("c"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                c = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            c = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("d"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                d = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            d = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("e"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                e = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            e = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("f"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                f = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            f = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("g"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                g = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            g = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("h"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                h = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            h = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("i"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                i = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            i = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("j"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("u"))
+                                            {
+                                                j = u[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            j = arrayasignacionif[0];
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("k")) ///los numeritos
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                k = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            k = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("l"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                l = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            l = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("m"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                m = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            m = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("n"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                n = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            n = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("ñ"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                ñ = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            ñ = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("o"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                o = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            o = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("p"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                p = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            p = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("q"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                q = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            q = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("r"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                r = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            r = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("s"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("t"))
+                                            {
+                                                s = t[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            s = Double.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("t"))
+                                    {
+                                        var jajadivicion = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                        for (var zzz = 0; zzz < jajadivicion.Length; zzz++)
+                                        {
+                                            if (jajadivicion[zzz].Contains("NaN"))
+                                            {
+                                                throw new Exception();
+                                            }
+                                            t[zzz] = Double.Parse(jajadivicion[zzz]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("u"))
+                                    {
+                                        u = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("v"))
+                                    {
+                                        var jajadivicion2 = arrayasignacionif[0].Replace("º-/*", "�").Split('�');
+                                        for (var zzz = 0; zzz < jajadivicion2.Length; zzz++)
+                                        {
+                                            v[zzz] = bool.Parse(jajadivicion2[zzz]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("w"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                w = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            w = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("x"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                x = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            x = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("y"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                y = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            y = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else if (arrayasignacionif[1][0].ToString().Contains("z"))
+                                    {
+                                        if (estoesarray.IsMatch(arrayasignacionif[0]))
+                                        {
+                                            var divicionSuprema = arrayasignacionif[0].Replace("-_-", "�").Split('�');
+                                            if (divicionSuprema[0][0].ToString().Contains("v"))
+                                            {
+                                                z = v[int.Parse(divicionSuprema[1])];
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                            };
+                                        }
+                                        else
+                                        {
+                                            //if (arrayasignacionif[0] == "NaN") throw new Exception();
+                                            z = bool.Parse(arrayasignacionif[0]);
+                                        };
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (salir.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    Environment.Exit(69);
+                                }
+                                else if (sleep.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var varibleabuscar = nuevocodigo[controladordenuevo].Replace("çlbv", "");
+
+                                    if (varibleabuscar[0].ToString().Contains("k"))
+                                    {
+                                        Thread.Sleep(int.Parse(k.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("l"))
+                                    {
+                                        Thread.Sleep(int.Parse(l.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("m"))
+                                    {
+                                        Thread.Sleep(int.Parse(m.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("n"))
+                                    {
+                                        Thread.Sleep(int.Parse(n.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("ñ"))
+                                    {
+                                        Thread.Sleep(int.Parse(ñ.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("o"))
+                                    {
+                                        Thread.Sleep(int.Parse(o.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("p"))
+                                    {
+                                        Thread.Sleep(int.Parse(p.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("q"))
+                                    {
+                                        Thread.Sleep(int.Parse(q.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("r"))
+                                    {
+                                        Thread.Sleep(int.Parse(r.ToString()));
+                                    }
+                                    else if (varibleabuscar[0].ToString().Contains("s"))
+                                    {
+                                        Thread.Sleep(int.Parse(s.ToString()));
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (invertirbool.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableainvertir = nuevocodigo[controladordenuevo].Replace("!7;", "");
+                                    if (variableainvertir[0].ToString().Contains("w"))
+                                    {
+                                        w = !w;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("x"))
+                                    {
+                                        x = !x;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("y"))
+                                    {
+                                        y = !y;
+                                    }
+                                    else if (variableainvertir[0].ToString().Contains("z"))
+                                    {
+                                        z = !z;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (restare.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r - numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s - numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (sumedore.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableaferificar = nuevocodigo[controladordenuevo][0];
+                                    var numeroparalamodificacion = int.Parse(nuevocodigo[controladordenuevo].Substring("__RPD.".Length));
+                                    if (variableaferificar.ToString().Contains("k"))
+                                    {
+                                        k = k + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("l"))
+                                    {
+                                        l = l + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("m"))
+                                    {
+                                        m = m + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("n"))
+                                    {
+                                        n = n + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("ñ"))
+                                    {
+                                        ñ = ñ + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("o"))
+                                    {
+                                        o = o + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("p"))
+                                    {
+                                        p = p + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("q"))
+                                    {
+                                        q = q + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("r"))
+                                    {
+                                        r = r + numeroparalamodificacion;
+                                    }
+                                    else if (variableaferificar.ToString().Contains("s"))
+                                    {
+                                        s = s + numeroparalamodificacion;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (consolaentrada.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var variableparalacomprobacion = nuevocodigo[controladordenuevo][0];
+                                    if (variableparalacomprobacion.ToString().Contains("a"))
+                                    {
+                                        a = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("b"))
+                                    {
+                                        b = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("c"))
+                                    {
+                                        c = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("d"))
+                                    {
+                                        d = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("e"))
+                                    {
+                                        e = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("f"))
+                                    {
+                                        f = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("g"))
+                                    {
+                                        g = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("h"))
+                                    {
+                                        h = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("i"))
+                                    {
+                                        i = Console.ReadLine();
+                                    }
+                                    else if (variableparalacomprobacion.ToString().Contains("j"))
+                                    {
+                                        j = Console.ReadLine();
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+                                }
+                                else if (remplazar.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var argumentos = nuevocodigo[controladordenuevo].Substring(4).Split('_');
+                                    string texto;
+                                    string remplazo;
+                                    var exp = new Regex(argumentos[1]);
+                                    if (argumentos[0][0].ToString().Contains("a"))
+                                    {
+                                        texto = a;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("b"))
+                                    {
+                                        texto = b;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("c"))
+                                    {
+                                        texto = c;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("d"))
+                                    {
+                                        texto = d;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("e"))
+                                    {
+                                        texto = e;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("f"))
+                                    {
+                                        texto = f;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("g"))
+                                    {
+                                        texto = g;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("h"))
+                                    {
+                                        texto = h;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("i"))
+                                    {
+                                        texto = i;
+                                    }
+                                    else if (argumentos[0][0].ToString().Contains("j"))
+                                    {
+                                        texto = j;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+
+                                    if (argumentos[2][0].ToString().Contains("a"))
+                                    {
+                                        remplazo = a;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("b"))
+                                    {
+                                        remplazo = b;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("c"))
+                                    {
+                                        remplazo = c;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("d"))
+                                    {
+                                        remplazo = d;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("e"))
+                                    {
+                                        remplazo = e;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("f"))
+                                    {
+                                        remplazo = f;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("g"))
+                                    {
+                                        remplazo = g;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("h"))
+                                    {
+                                        remplazo = h;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("i"))
+                                    {
+                                        remplazo = i;
+                                    }
+                                    else if (argumentos[2][0].ToString().Contains("j"))
+                                    {
+                                        remplazo = j;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                    var resultado = exp.Replace(texto, remplazo);
+
+                                    if (argumentos[3][0].ToString().Contains("a"))
+                                    {
+                                        a = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("b"))
+                                    {
+                                        b = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("c"))
+                                    {
+                                        c = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("d"))
+                                    {
+                                        d = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("e"))
+                                    {
+                                        e = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("f"))
+                                    {
+                                        f = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("g"))
+                                    {
+                                        g = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("h"))
+                                    {
+                                        h = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("i"))
+                                    {
+                                        i = resultado;
+                                    }
+                                    else if (argumentos[3][0].ToString().Contains("j"))
+                                    {
+                                        j = resultado;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                }//
+                                else if (match.IsMatch(nuevocodigo[controladordenuevo]))
+                                {
+                                    var args = nuevocodigo[controladordenuevo].Substring(4).Split('_');
+                                    var expjaja = new Regex(args[0]);
+                                    bool ismatch;
+
+                                    if (args[1][0].ToString().Contains("a"))
+                                    {
+                                        if (expjaja.IsMatch(a))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("b"))
+                                    {
+                                        if (expjaja.IsMatch(b))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("c"))
+                                    {
+                                        if (expjaja.IsMatch(c))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("d"))
+                                    {
+                                        if (expjaja.IsMatch(d))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("e"))
+                                    {
+                                        if (expjaja.IsMatch(e))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("f"))
+                                    {
+                                        if (expjaja.IsMatch(f))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("g"))
+                                    {
+                                        if (expjaja.IsMatch(g))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("h"))
+                                    {
+                                        if (expjaja.IsMatch(h))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("i"))
+                                    {
+                                        if (expjaja.IsMatch(i))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else if (args[1][0].ToString().Contains("j"))
+                                    {
+                                        if (expjaja.IsMatch(j))
+                                        {
+                                            ismatch = true;
+                                        }
+                                        else
+                                        {
+                                            ismatch = false;
+                                        };
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                    if (args[2][0].ToString().Contains("w"))
+                                    {
+                                        w = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("x"))
+                                    {
+                                        x = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("y"))
+                                    {
+                                        y = ismatch;
+                                    }
+                                    else if (args[2][0].ToString().Contains("z"))
+                                    {
+                                        z = ismatch;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    };
+
+                                }////////////////
+                                else if (editarchivus.IsMatch(nuevocodigo[controladordenuevo]))
+                    {
+                        var arrayedit = nuevocodigo[controladordenuevo].Replace("👌👈", "�").Split('�');
+                        if (File.Exists(arrayedit[0]))
+                        {
+                            if (arrayedit[1][0].ToString().Contains("a"))
+                            {
+                                File.WriteAllText(arrayedit[0], a);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("b"))
+                            {
+                                File.WriteAllText(arrayedit[0], b);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("c"))
+                            {
+                                File.WriteAllText(arrayedit[0], c);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("d"))
+                            {
+                                File.WriteAllText(arrayedit[0], d);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("e"))
+                            {
+                                File.WriteAllText(arrayedit[0], e);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("f"))
+                            {
+                                File.WriteAllText(arrayedit[0], f);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("g"))
+                            {
+                                File.WriteAllText(arrayedit[0], g);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("h"))
+                            {
+                                File.WriteAllText(arrayedit[0], h);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("i"))
+                            {
+                                File.WriteAllText(arrayedit[0], i);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("j"))
+                            {
+                                File.WriteAllText(arrayedit[0], j);
+                            }
+                            else
+                            {
+                                throw new Exception();
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }
+                                else
+                                {
+                                    throw new Exception();
+                                };
+                            };
+                        
                                 };
                             }
                             else
@@ -21374,39 +22168,39 @@ namespace onlineTroll
                         //conexion.DefaultRequestHeaders.Add("accept-encoding", "gzip, deflate, br");
                         HttpResponseMessage pagina;
 
-                                            if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("get"))
-                                            {
-                                                pagina = await conexion.GetAsync(link);
-                                            }
-                                            else if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("delete"))
-                                            {
-                                                pagina = await conexion.DeleteAsync(link);
-                                            }
-                                            else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Post;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                            {
-                                                var peticion = new HttpRequestMessage();
-                                                peticion.Method = System.Net.Http.HttpMethod.Put;
-                                                conexion.BaseAddress = new Uri(link);
-                                                peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
-                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2]);
-                                                pagina = await conexion.SendAsync(peticion);
-                                            }
-                                            else
-                                            {
-                                                throw new Exception();
-                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1]));
-                                            };
+                        if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("get"))
+                        {
+                            pagina = await conexion.GetAsync(link);
+                        }
+                        else if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("delete"))
+                        {
+                            pagina = await conexion.DeleteAsync(link);
+                        }
+                        else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                        {
+                            var peticion = new HttpRequestMessage();
+                            peticion.Method = System.Net.Http.HttpMethod.Post;
+                            conexion.BaseAddress = new Uri(link);
+                            peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
+                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
+                            peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+                            pagina = await conexion.SendAsync(peticion);
+                        }
+                        else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                        {
+                            var peticion = new HttpRequestMessage();
+                            peticion.Method = System.Net.Http.HttpMethod.Put;
+                            conexion.BaseAddress = new Uri(link);
+                            peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
+                            //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
+                            peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+                            pagina = await conexion.SendAsync(peticion);
+                        }
+                        else
+                        {
+                            throw new Exception();
+                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1]));
+                        };
 
 
                         // = await conexion.GetAsync(link);
@@ -22670,7 +23464,62 @@ namespace onlineTroll
                             throw new Exception();
                         };
 
-                    }////////////////
+                    }////////////////x
+                    else if (editarchivus.IsMatch(diviciondecodigo[xxx]))
+                    {
+                        var arrayedit = diviciondecodigo[xxx].Replace("👌👈", "�").Split('�');
+                        if (File.Exists(arrayedit[0]))
+                        {
+                            if (arrayedit[1][0].ToString().Contains("a"))
+                            {
+                                File.WriteAllText(arrayedit[0], a);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("b"))
+                            {
+                                File.WriteAllText(arrayedit[0], b);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("c"))
+                            {
+                                File.WriteAllText(arrayedit[0], c);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("d"))
+                            {
+                                File.WriteAllText(arrayedit[0], d);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("e"))
+                            {
+                                File.WriteAllText(arrayedit[0], e);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("f"))
+                            {
+                                File.WriteAllText(arrayedit[0], f);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("g"))
+                            {
+                                File.WriteAllText(arrayedit[0], g);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("h"))
+                            {
+                                File.WriteAllText(arrayedit[0], h);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("i"))
+                            {
+                                File.WriteAllText(arrayedit[0], i);
+                            }
+                            else if (arrayedit[1][0].ToString().Contains("j"))
+                            {
+                                File.WriteAllText(arrayedit[0], j);
+                            }
+                            else
+                            {
+                                throw new Exception();
+                            };
+                        }
+                        else
+                        {
+                            throw new Exception();
+                        };
+                    }////
                     else
                     {
                         throw new Exception();
