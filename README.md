@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/bs3n8ufimpt8pw3/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/r3lifclyi5hfir8/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/nuwf7ecw9q5c50q/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/77melg8qdo010xq/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -109,6 +109,16 @@ Imprime cualquier variable incluso booleanos
 
 ## Archivos
 
+### Editar
+
+Para editar un archivo deberas usar 👌👈 poniendo la ruta del archivo atras y la variable con la cual se ara la modificacion adelante.
+
+```tllonline
+ARCHIVO👌👈VARIABLE
+```
+
+### Leer
+
 Para los archivos debes usar ♫↕! para apuntar a el archivo y usar csis para apuntar a la variable donde guardar el string con el contenido del archivo.
 
 ```tllonline
@@ -116,7 +126,7 @@ Para los archivos debes usar ♫↕! para apuntar a el archivo y usar csis para 
 ```
 **Ningun apuntador es opcional**
 
-**Este metodo es asincrono osea si el archivo es gande o tu disco duro no es eficiente puede tardar un poco**
+**Estos metodos son asincrono osea si el archivo es gande o tu disco duro no es eficiente puede tardar un poco**
 
 ### Online
 
@@ -208,9 +218,9 @@ __kpEXP_VARIABLE_VARIABLE2
 
 ## Proximamente
 
-+ Funcion para generar repeticiones a base de un x tiempo en otro hilo de ejecucion.
 + Funcion de extracion de caracteres para strings.
 + websocket (actualizacion lejana)
++ esperamos sus sugerencias.
 
 **Esperen estos cambios los proximos meses**
 
