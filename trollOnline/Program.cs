@@ -326,31 +326,46 @@ namespace onlineTroll
                                     }
                                     else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                     {
+                                        HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
+
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -1803,29 +1818,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -3278,29 +3306,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -4753,29 +4794,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -6228,29 +6282,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -7703,29 +7770,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -9178,29 +9258,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -10653,29 +10746,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -12128,29 +12234,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -13603,29 +13722,42 @@ namespace onlineTroll
                                     {
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                         var conexion = new HttpClient();
-                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                         HttpResponseMessage pagina;
-                                        if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                        {
-                                            pagina = await conexion.GetAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                        {
-                                            pagina = await conexion.DeleteAsync(link);
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                        {
-                                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                        {
-                                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        }
-                                        else
-                                        {
-                                            throw new Exception();
-                                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                        };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                         var html = await pagina.Content.ReadAsStringAsync();
                                         var status1 = pagina.StatusCode.ToString();
                                         Double status;
@@ -15054,9 +15186,9 @@ namespace onlineTroll
 
 
                         //if (suno != null) { } else if (funo != Double.NaN) { } else { };
-                        if (suno == sdos)
+                        if (suno != null && sdos != null)
                         {
-
+                            if(suno == sdos){
                             var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
@@ -15245,29 +15377,42 @@ namespace onlineTroll
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                     var conexion = new HttpClient();
-                                    conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                     HttpResponseMessage pagina;
-                                    if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                    {
-                                        pagina = await conexion.GetAsync(link);
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                    {
-                                        pagina = await conexion.DeleteAsync(link);
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                    {
-                                        pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                    {
-                                        pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    }
-                                    else
-                                    {
-                                        throw new Exception();
-                                        //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                     var html = await pagina.Content.ReadAsStringAsync();
                                     var status1 = pagina.StatusCode.ToString();
                                     Double status;
@@ -16524,10 +16669,11 @@ namespace onlineTroll
                                     throw new Exception();
                                 };
                             };
-
+};
                         }
-                        else if (funo == fdos)
+                        else if (funo != Double.NaN && Double.NaN != fdos)
                         {
+                            if(funo == fdos){
                             var nuevocodigo = diviciondecodigo[xxx].Substring("...¿!ª#".Length).Replace("◄►", "�").Split('�');
                             for (var controladordenuevo = 0; controladordenuevo < nuevocodigo.Length; controladordenuevo++)
                             {
@@ -16716,29 +16862,42 @@ namespace onlineTroll
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                     var conexion = new HttpClient();
-                                    conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                     HttpResponseMessage pagina;
-                                    if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
-                                    {
-                                        pagina = await conexion.GetAsync(link);
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
-                                    {
-                                        pagina = await conexion.DeleteAsync(link);
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
-                                    {
-                                        pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    }
-                                    else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
-                                    {
-                                        pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    }
-                                    else
-                                    {
-                                        throw new Exception();
-                                        //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
-                                    };
+                                            if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                            };
                                     var html = await pagina.Content.ReadAsStringAsync();
                                     var status1 = pagina.StatusCode.ToString();
                                     Double status;
@@ -17995,7 +18154,7 @@ namespace onlineTroll
                                     throw new Exception();
                                 };
                             };
-
+};
                         }
                         else
                         {
@@ -18234,7 +18393,8 @@ namespace onlineTroll
                                         {
                                             var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                             var conexion = new HttpClient();
-                                            conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                        conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                             HttpResponseMessage pagina;
                                             if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
                                             {
@@ -18246,11 +18406,23 @@ namespace onlineTroll
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
                                             {
-                                                pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
                                             {
-                                                pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
                                             {
@@ -19708,7 +19880,8 @@ namespace onlineTroll
                                         {
                                             var link = nuevocodigo[controladordenuevo].Split('¿')[1];
                                             var conexion = new HttpClient();
-                                            conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[2].Length - 1));
+                                            conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
                                             HttpResponseMessage pagina;
                                             if (nuevocodigo[controladordenuevo].Split('¿')[3].ToLower().Contains("get"))
                                             {
@@ -19720,11 +19893,23 @@ namespace onlineTroll
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
                                             {
-                                                pagina = await conexion.PostAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
                                             {
-                                                pagina = await conexion.PutAsync(new Uri(link), new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1]));
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
                                             {
@@ -21183,22 +21368,45 @@ namespace onlineTroll
                     {
                         var link = diviciondecodigo[xxx].Split('¿')[1];
                         var conexion = new HttpClient();
-                        conexion.DefaultRequestHeaders.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);//.Substring(0, diviciondecodigo[xxx].Split('¿')[2].Length - 1));
+                        conexion.DefaultRequestHeaders.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
+                        //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
+                        //conexion.DefaultRequestHeaders.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);//.Substring(0, diviciondecodigo[xxx].Split('¿')[2].Length - 1));
                         //conexion.DefaultRequestHeaders.Add("accept-encoding", "gzip, deflate, br");
                         HttpResponseMessage pagina;
-                        if(diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("get")){
-                            pagina = await conexion.GetAsync(link);
-                        }else if(diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("delete")){
-                            pagina = await conexion.DeleteAsync(link);
-                        }else if(diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("post")){
-                            pagina = await conexion.PostAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1] ));
-                        }else if(diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("put")){
-                            pagina = await conexion.PutAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1]));
-                        }
-                        else{
-                            throw new Exception();
-                            //pagina = await conexion.PutAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1]));
-                        };
+
+                                            if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("get"))
+                                            {
+                                                pagina = await conexion.GetAsync(link);
+                                            }
+                                            else if (diviciondecodigo[xxx].Split('¿')[3].ToLower().Contains("delete"))
+                                            {
+                                                pagina = await conexion.DeleteAsync(link);
+                                            }
+                                            else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("post"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Post;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
+                                            {
+                                                var peticion = new HttpRequestMessage();
+                                                peticion.Method = System.Net.Http.HttpMethod.Put;
+                                                conexion.BaseAddress = new Uri(link);
+                                                peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
+                                                //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
+                                                peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2]);
+                                                pagina = await conexion.SendAsync(peticion);
+                                            }
+                                            else
+                                            {
+                                                throw new Exception();
+                                                //pagina = await conexion.PutAsync(new Uri(link), new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1]));
+                                            };
 
 
                         // = await conexion.GetAsync(link);
@@ -22477,7 +22685,7 @@ namespace onlineTroll
                 Console.Title = "Troll Script";
                 Console.Clear();
                 Console.WriteLine("Fracasaste, simplemento no pudiste usar este lenguaje, vuelve cuando seas un robot");
-                //Console.WriteLine(x);
+                Console.WriteLine(x);
                 while (true) { };
             };
         }
@@ -22491,7 +22699,7 @@ namespace onlineTroll
             //Console.WriteLine("dsdsd".ToString());
             //var xs = new Compilador();
             //await xs.LOL();
-            Console.Title = "Troll Script";
+            Console.Title = "Troll Online";
             var opciones = false;
             while (opciones == false)
             {
