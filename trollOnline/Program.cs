@@ -329,6 +329,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+                                            if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+                                        };
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -348,7 +380,42 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            ///////
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -358,7 +425,41 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -1874,6 +1975,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -1893,7 +2026,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -1903,7 +2072,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -3420,6 +3625,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -3439,7 +3676,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -3449,7 +3722,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -4966,6 +5275,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -4985,7 +5326,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -4995,7 +5372,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -6511,6 +6924,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -6530,7 +6975,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -6540,7 +7021,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -8056,6 +8573,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -8075,7 +8624,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -8085,7 +8670,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -9601,6 +10222,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -9620,7 +10273,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -9630,7 +10319,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -11146,6 +11871,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -11165,7 +11922,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -11175,7 +11968,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -12691,6 +13520,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -12710,7 +13571,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -12720,7 +13617,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -14236,6 +15169,38 @@ namespace onlineTroll
                                         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
 
                                         var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                         var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -14255,7 +15220,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -14265,7 +15266,43 @@ namespace onlineTroll
                                             conexion.BaseAddress = new Uri(link);
                                             peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                            peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                                        var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                             pagina = await conexion.SendAsync(peticion);
                                         }
                                         else
@@ -15947,6 +16984,38 @@ namespace onlineTroll
                                 else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                     var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -15966,7 +17035,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -15976,7 +17081,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                           var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -17489,6 +18630,38 @@ namespace onlineTroll
                                 else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                     var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -17508,7 +18681,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -17518,7 +18727,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -19076,6 +20321,38 @@ namespace onlineTroll
                                 else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                     var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -19095,7 +20372,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -19105,7 +20418,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -20618,6 +21967,38 @@ namespace onlineTroll
                                 else if (http.IsMatch(nuevocodigo[controladordenuevo]))
                                 {
                                     var link = nuevocodigo[controladordenuevo].Split('¿')[1];
+                                    if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                                     var conexion = new HttpClient();
                                         conexion.DefaultRequestHeaders.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
@@ -20637,7 +22018,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else if (nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -20647,7 +22064,43 @@ namespace onlineTroll
                                                 conexion.BaseAddress = new Uri(link);
                                                 peticion.Headers.Add("Authorization", nuevocodigo[controladordenuevo].Split('¿')[2]);
                                                 //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[4].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[4].Length - 1));
-                                                peticion.Content = new StringContent(nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0,nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length -1));
+                                                                                            var contenidoss = nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Substring(0, nuevocodigo[controladordenuevo].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                                                 pagina = await conexion.SendAsync(peticion);
                                             }
                                             else
@@ -22161,6 +23614,38 @@ namespace onlineTroll
                     else if (http.IsMatch(diviciondecodigo[xxx]))
                     {
                         var link = diviciondecodigo[xxx].Split('¿')[1];
+                        if(link.Length == 1){
+if (link[0].ToString().Contains("a")) {
+    link = a;
+}
+else if (link[0].ToString().Contains("b")) {
+    link = b;
+}
+else if (link[0].ToString().Contains("c")) {
+    link = c;
+}
+else if (link[0].ToString().Contains("d")) {
+    link = d;
+}
+else if (link[0].ToString().Contains("e")) {
+    link = e;
+}
+else if (link[0].ToString().Contains("f")) {
+    link = f;
+}
+else if (link[0].ToString().Contains("g")) {
+    link = g;
+}
+else if (link[0].ToString().Contains("h")) {
+    link = h;
+}
+else if (link[0].ToString().Contains("i")) {
+    link = i;
+}
+else if (link[0].ToString().Contains("j")) {
+    link = j;
+};
+};
                         var conexion = new HttpClient();
                         conexion.DefaultRequestHeaders.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
                         //conexion.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
@@ -22183,7 +23668,43 @@ namespace onlineTroll
                             conexion.BaseAddress = new Uri(link);
                             peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
-                            peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                        var contenidoss = diviciondecodigo[xxx].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                             pagina = await conexion.SendAsync(peticion);
                         }
                         else if (diviciondecodigo[xxx].Split('¿')[3].Split('|')[0].ToLower().Contains("put"))
@@ -22193,7 +23714,43 @@ namespace onlineTroll
                             conexion.BaseAddress = new Uri(link);
                             peticion.Headers.Add("Authorization", diviciondecodigo[xxx].Split('¿')[2]);
                             //peticion.Content = new StringContent("", System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[4].Substring(0, diviciondecodigo[xxx].Split('¿')[4].Length - 1));
-                            peticion.Content = new StringContent(diviciondecodigo[xxx].Split('¿')[3].Split('|')[1], System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+                                                                        var contenidoss = diviciondecodigo[xxx].Split('¿')[3].Split('|')[1];
+                                            if(contenidoss.Length == 1){
+                                                if (contenidoss[0].ToString().Contains("a")) {
+    contenidoss = a;
+}
+else if (contenidoss[0].ToString().Contains("b")) {
+    contenidoss = b;
+}
+else if (contenidoss[0].ToString().Contains("c")) {
+    contenidoss = c;
+}
+else if (contenidoss[0].ToString().Contains("d")) {
+    contenidoss = d;
+}
+else if (contenidoss[0].ToString().Contains("e")) {
+    contenidoss = e;
+}
+else if (contenidoss[0].ToString().Contains("f")) {
+    contenidoss = f;
+}
+else if (contenidoss[0].ToString().Contains("g")) {
+    contenidoss = g;
+}
+else if (contenidoss[0].ToString().Contains("h")) {
+    contenidoss = h;
+}
+else if (contenidoss[0].ToString().Contains("i")) {
+    contenidoss = i;
+}
+else if (contenidoss[0].ToString().Contains("j")) {
+    contenidoss = j;
+};
+                                            };
+
+                                            peticion.Content = new StringContent(contenidoss, System.Text.Encoding.UTF8, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Substring(0, diviciondecodigo[xxx].Split('¿')[3].Split('|')[2].Length - 1));
+
+
                             pagina = await conexion.SendAsync(peticion);
                         }
                         else
