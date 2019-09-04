@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/r3lifclyi5hfir8/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/xx26jhbpjq2j9er/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/77melg8qdo010xq/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/ouooe19g0dd5nbf/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -147,7 +147,10 @@ l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO
 l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿gEt
 l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿METODO|lo que necesites|Content Type
 l},ºVARIABLE<VARIABLE¿LINK¿AUTORIZACION¿put|{}|application/json
+l},ºVARIABLE<VARIABLE¿VARIABLE¿AUTORIZACION¿put|VARIABLE|application/json
 ```
+
+**Puedes usar variable string para el LINK y el contenido**
 
 **Ningun apuntador es opcional**
 
