@@ -272,7 +272,7 @@ __kpEXP_VARIABLE_VARIABLE2
 
 **Esperen estos cambios los proximos meses**
 
-Unete a https://discord.gg/kt3jQjz para estar al tanto.
+Unete a https://discord.gg/ubyZuyz para estar al tanto.
 
 ## Filosofia
 
