@@ -2,9 +2,9 @@
 
 ## Descargar
 
-Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/es2lkb4hkk2nphm/Troll_Online_x64_Setup.exe/file)
+Para instalar la version de x64 haz [click aqui](https://www.mediafire.com/file/jzruxnlz3n9i0bl/Troll_Online_x64_Setup.exe/file)
 
-Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/lqyn1ittvd9t31c/Troll_Online_x86_Setup.exe/file)
+Para instalar la version de x86 haz [click aqui](https://www.mediafire.com/file/i1q0c239dodgifz/Troll_Online_x86_Setup.exe/file)
 
 ## Que es esto?
 
@@ -76,19 +76,8 @@ VARIABLE¿!ª#VARIABLE
 ```
 Despues de eso debe ir un espacio y podes escribir el codigo que quieras pero usando ◄► como saltos de lineas.
 
-### Bucles
+**Dentro de los if no puedo haber otro if**
 
-**Dentro de los blucles no puedo haber otro bucle o un if**
-
-Para generar un bucle debes usar \_\_rap
-
-Los bucle a diferencia de otros lenguajes les debes indicar con una variable el numero de repeticiones (debes utiliazar un numero entero para no hacer un bucle infinito).
-
-```tllonline
-__rapVARIABLE
-```
-
-Despues de eso debe ir un espacio y podes escribir el codigo que quieras pero usando ◄► como saltos de lineas.
 
 ### Consola
 
