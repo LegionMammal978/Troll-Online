@@ -88,6 +88,8 @@ Los bucle a diferencia de otros lenguajes les debes indicar con una variable el 
 __rapVARIABLE
 ```
 
+Despues de eso debe ir un espacio y podes escribir el codigo que quieras pero usando ◄► como saltos de lineas.
+
 ### Consola
 
 #### Entrada
